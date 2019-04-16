@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
-import '../stylesheets/App.css';
+import '../stylesheets/App.scss';
+import '../stylesheets/reset.scss';
 
 class App extends Component {
   render() {
     return (
-        <div>Lets just show something first</div>
+        <div className="app-container">
+        blah
+        </div>
     );
   }
 }
