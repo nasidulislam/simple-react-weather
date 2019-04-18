@@ -23,7 +23,7 @@
    }
 }
 
-@mixin animated {
+@mixin animated($delay) {
     -webkit-animation-name: fadeInDown;
     animation-name: fadeInDown;
     background-repeat: no-repeat;
@@ -31,4 +31,5 @@
     animation-duration: 2s;
     -webkit-animation-fill-mode: both;
     animation-fill-mode: both;
+    animation-delay: $delay;
 }

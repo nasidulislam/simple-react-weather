@@ -9,8 +9,7 @@
 
     // top block content start
     .setup-step-one-top {
-        @include animated();
-
+        @include animated(0s);
         display: flex;
         flex-direction: column;
         margin-bottom: 50px;
@@ -23,6 +22,11 @@
 
     // middle block content start
     .setup-step-one-middle {
+        @include animated(2.1s);
         margin-bottom: 50px;
+
+        .step-one-middle-content-image {
+            height: 300px;
+        }
     }
 }
