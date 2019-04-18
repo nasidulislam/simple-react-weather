@@ -2,19 +2,24 @@ import React, { Component } from 'react';
 import '../stylesheets/App.scss';
 
 // component imports
-import Setup from './Setup';
+import SetupStepOne from './SetupStepOne';
 // other imports
 import '../stylesheets/reset.scss';
 import '../stylesheets/variables.scss';
 
 class App extends Component {
-  render() {
-    return (
-        <div className="app-container">
-            <Setup />
-        </div>
-    );
-  }
+    state = {
+        setupStep: "1"
+    }
+    render() {
+        if(this.state.setupStep === "1") {
+            return (
+                <div className="app-container">
+                    <SetupStepOne />
+                </div>
+            );
+        }
+    }
 }
 
 export default App;
