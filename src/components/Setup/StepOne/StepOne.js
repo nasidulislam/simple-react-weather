@@ -1,11 +1,11 @@
 import React from 'react';
-import '../stylesheets/Setup.scss';
+import './StepOne.scss';
 
-class SetupStepOne extends React.Component {
+class StepOne extends React.Component {
     render() {
         return (
             <div className="setup-step-one-container">
-                <div className="steup-step-one-top">
+                <div className="setup-step-one-top">
                     <span className="step-one-top-content-one">
                         Hello and welcome to your favorite weather app
                     </span>
@@ -14,13 +14,13 @@ class SetupStepOne extends React.Component {
                     </span>
                 </div>
 
-                <div className="steup-step-one-middle">
+                <div className="setup-step-one-middle">
                     <span className="step-one-middle-content">
                         You can add your cities and locales to your dashboard for easy access
                     </span>
                 </div>
 
-                <div className="steup-step-one-bottom">
+                <div className="setup-step-one-bottom">
 
                 </div>
             </div>
@@ -28,4 +28,4 @@ class SetupStepOne extends React.Component {
     }
 }
 
-export default SetupStepOne;
+export default StepOne;

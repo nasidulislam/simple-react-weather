@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import '../stylesheets/App.scss';
+import './App.scss';
 
 // component imports
-import SetupStepOne from './SetupStepOne';
+import StepOne from './Setup/StepOne/StepOne';
+
 // other imports
-import '../stylesheets/reset.scss';
-import '../stylesheets/variables.scss';
+import './core/variables.scss';
+import './core/reset.scss';
 
 class App extends Component {
     state = {
@@ -15,7 +16,7 @@ class App extends Component {
         if(this.state.setupStep === "1") {
             return (
                 <div className="app-container">
-                    <SetupStepOne />
+                    <StepOne />
                 </div>
             );
         }
