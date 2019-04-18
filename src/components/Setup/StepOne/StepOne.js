@@ -1,6 +1,9 @@
 import React from 'react';
 import './StepOne.scss';
 
+// other imports
+import '../Setup.scss';
+
 class StepOne extends React.Component {
     render() {
         return (

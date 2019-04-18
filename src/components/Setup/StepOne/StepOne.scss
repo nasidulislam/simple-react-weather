@@ -1,9 +1,13 @@
 @import '../../core/variables.scss';
+@import '../Setup.scss';
 
-.setup-component-container {
+.setup-step-one-container {
     display: flex;
     flex-direction: column;
     padding-top: 40px;
     text-align: center;
 
+    .setup-step-one-top {
+        @include animated();
+    }
 }
