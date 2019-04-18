@@ -3,13 +3,30 @@ import './StepTwo.scss';
 
 // component imports
 import AddCity from '../../AddCity/AddCity';
+import Button from '../../Button/Button';
 
 class StepTwo extends React.Component {
     render() {
         return(
             <div className="setup-step-two-container">
                 <div className="setup-step-two-top">
+                    <span className="step-two-top-content-one">
+                        You can search by City name or Zip Code
+                    </span>
+                </div>
+
+                <div className="setup-step-two-middle">
                     <AddCity />
+                </div>
+
+                <div className="setup-step-two-bottom">
+                    <Button
+                        containerClass="step-two-bottom-content-one"
+                        buttonClass="step-two-continue-button"
+                        label="Complete Setup"
+                        variant="primary-button"
+                        clickHandler={this.props.nextStepButtonHandler}
+                    />
                 </div>
             </div>
         )
