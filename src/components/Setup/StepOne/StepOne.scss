@@ -25,8 +25,13 @@
         @include animated(2.1s);
         margin-bottom: 50px;
 
-        .step-one-middle-content-image {
+        .step-one-middle-content-two {
             height: 300px;
         }
+    }
+
+    // bottom content block started
+    .setup-step-one-bottom {
+        @include animated(4.1s);
     }
 }
