@@ -3,6 +3,7 @@ import './App.scss';
 
 // component imports
 import StepOne from './Setup/StepOne/StepOne';
+import StepTwo from './Setup/StepTwo/StepTwo';
 
 // other imports
 import './core/variables.scss';
@@ -10,15 +11,32 @@ import './core/reset.scss';
 
 class App extends Component {
     state = {
-        setupStep: "1"
+        currentSetupStep: 1
     }
+
+    handleSetupSteps = () => {
+        const nextStep = this.state.currentSetupStep + 1;
+
+        this.setState({ currentSetupStep: nextStep });
+    };
+
     render() {
-        if(this.state.setupStep === "1") {
+        if(this.state.currentSetupStep === 1) {
             return (
                 <div className="app-container">
-                    <StepOne />
+                    <StepOne nextStepButtonHandler={this.handleSetupSteps} />
                 </div>
             );
+        } else if(this.state.currentSetupStep === 2){
+            return (
+                <div className="app-container">
+                    <StepTwo nextStepButtonHandler={this.handleSetupSteps} />
+                </div>
+            );
+        } else {
+            return(
+                <div>Here</div>
+            )
         }
     }
 }

@@ -32,6 +32,7 @@ const StepOne = (props) => {
                     buttonClass="step-one-continue-button"
                     label="Lets get started"
                     variant="primary-button"
+                    clickHandler={props.nextStepButtonHandler}
                 />
             </div>
         </div>
