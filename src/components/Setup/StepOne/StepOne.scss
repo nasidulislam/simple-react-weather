@@ -7,7 +7,22 @@
     padding-top: 40px;
     text-align: center;
 
+    // top block content start
     .setup-step-one-top {
         @include animated();
+
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 50px;
+
+        .step-one-top-content-one {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+    }
+
+    // middle block content start
+    .setup-step-one-middle {
+        margin-bottom: 50px;
     }
 }
