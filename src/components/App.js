@@ -1,20 +1,44 @@
 import React, { Component } from 'react';
-import '../stylesheets/App.scss';
+import './App.scss';
 
 // component imports
-import Setup from './Setup';
+import StepOne from './Setup/StepOne/StepOne';
+import StepTwo from './Setup/StepTwo/StepTwo';
+
 // other imports
-import '../stylesheets/reset.scss';
-import '../stylesheets/variables.scss';
+import './core/variables.scss';
+import './core/reset.scss';
 
 class App extends Component {
-  render() {
-    return (
-        <div className="app-container">
-            <Setup />
-        </div>
-    );
-  }
+    state = {
+        currentSetupStep: 1
+    }
+
+    handleSetupSteps = () => {
+        const nextStep = this.state.currentSetupStep + 1;
+
+        this.setState({ currentSetupStep: nextStep });
+    };
+
+    render() {
+        if(this.state.currentSetupStep === 1) {
+            return (
+                <div className="app-container">
+                    <StepOne nextStepButtonHandler={this.handleSetupSteps} />
+                </div>
+            );
+        } else if(this.state.currentSetupStep === 2){
+            return (
+                <div className="app-container">
+                    <StepTwo nextStepButtonHandler={this.handleSetupSteps} />
+                </div>
+            );
+        } else {
+            return(
+                <div>Here</div>
+            )
+        }
+    }
 }
 
 export default App;
