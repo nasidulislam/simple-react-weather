@@ -16,9 +16,13 @@ class App extends Component {
             viewArray: ["step-one", "step-two", "dashboard"],
             currentViewName: "",
             currentViewIndex: null
-        }
+        },
+
+        city: "",
+        query: ""
     }
 
+    // custom method start
     handleSetupSteps = () => {
         const view = { ...this.state.view };
         const nextStepIndex = view.currentViewIndex + 1;
@@ -50,6 +54,21 @@ class App extends Component {
         }
     }
 
+    handlePlaceSelect = () => {
+        // Extract City From Address Object
+        let addressObject = window.autocomplete.getPlace();
+        let address = addressObject.address_components;
+
+        // Check if address is valid
+        if (address) {
+            // Set State
+            this.setState({
+                city: address[0].long_name,
+                query: addressObject.formatted_address
+            });
+        }
+    }
+
     // lifecycle methods
     componentDidMount() {
         // this handles persistent view in a specific device
@@ -68,7 +87,11 @@ class App extends Component {
         } else if(view.currentViewName === "step-two") {
             return (
                 <div className="app-container">
-                    <StepTwo nextStepButtonHandler={this.handleSetupSteps} />
+                    <StepTwo
+                        nextStepButtonHandler={this.handleSetupSteps}
+                        handlePlaceSelect={this.handlePlaceSelect}
+                        addCityValue={this.state.query}
+                    />
                 </div>
             );
         } else if(view.currentViewName === "dashboard") {

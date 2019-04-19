@@ -16,7 +16,10 @@ class StepTwo extends React.Component {
                 </div>
 
                 <div className="setup-step-two-middle">
-                    <AddCity />
+                    <AddCity
+                        handlePlaceSelect={this.props.handlePlaceSelect}
+                        addCityValue={this.props.addCityValue}
+                    />
                 </div>
 
                 <div className="setup-step-two-bottom">

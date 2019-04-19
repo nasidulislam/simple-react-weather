@@ -7,12 +7,7 @@ import Script from 'react-load-script';
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 
 class AddCity extends React.Component {
-    state = {
-        city: "",
-        query: ""
-    }
-
-    handleScriptLoad() {
+    handleScriptLoad = () => {
         // Declare Options For Autocomplete
         var options = { types: ['(cities)'] };
         // Initialize Google Autocomplete
@@ -21,22 +16,7 @@ class AddCity extends React.Component {
         window.autocomplete = new google.maps.places.Autocomplete(document.getElementById('autocomplete'), options);
 
         // Fire Event when a suggested name is selected
-        window.autocomplete.addListener('place_changed', this.handlePlaceSelect);
-    }
-
-    handlePlaceSelect() {
-        // Extract City From Address Object
-        let addressObject = this.autocomplete.getPlace();
-        let address = addressObject.address_components;
-
-        // Check if address is valid
-        if (address) {
-            // Set State
-            this.setState({
-                city: address[0].long_name,
-                query: addressObject.formatted_address
-            });
-        }
+        window.autocomplete.addListener('place_changed', this.props.handlePlaceSelect);
     }
 
     render() {
@@ -50,7 +30,7 @@ class AddCity extends React.Component {
                         className="add-city-search-bar"
                         placeholder=""
                         hintText="Search City"
-                        onChange={this.handleChange}
+                        value={this.props.addCityValue}
                         />
                 </MuiThemeProvider>
             </div>
