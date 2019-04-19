@@ -18,12 +18,12 @@ const StepOne = (props) => {
             </div>
 
             <div className="setup-step-one-middle">
-                <span className="step-one-middle-content-text">
+                <span className="step-one-middle-content-one">
                     You can add your cities and locales to your dashboard for easy access
                 </span>
 
                 {/*TODO: Place screenshot of finished setup app */}
-                <img src="" alt="" className="step-one-middle-content-image" />
+                <img src="" alt="" className="step-one-middle-content-two" />
             </div>
 
             <div className="setup-step-one-bottom">

@@ -2,21 +2,14 @@
 @import '../Setup.scss';
 
 .setup-step-one-container {
-    display: flex;
-    flex-direction: column;
-    padding-top: 40px;
-    text-align: center;
+    @include containerStyles();
 
     // top block content start
     .setup-step-one-top {
-        @include animated(0s);
-        display: flex;
-        flex-direction: column;
-        margin-bottom: 50px;
+        @include headerStructureAndAnimation();
 
         .step-one-top-content-one {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
+            @include headerStyles();
         }
     }
 
@@ -25,8 +18,13 @@
         @include animated(2.1s);
         margin-bottom: 50px;
 
-        .step-one-middle-content-image {
+        .step-one-middle-content-two {
             height: 300px;
         }
+    }
+
+    // bottom content block started
+    .setup-step-one-bottom {
+        @include animated(4.1s);
     }
 }

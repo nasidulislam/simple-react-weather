@@ -23,6 +23,7 @@
    }
 }
 
+// fade in slide down animation
 @mixin animated($delay) {
     -webkit-animation-name: fadeInDown;
     animation-name: fadeInDown;
@@ -32,4 +33,25 @@
     -webkit-animation-fill-mode: both;
     animation-fill-mode: both;
     animation-delay: $delay;
+}
+
+// common styles for setup steps
+@mixin containerStyles() {
+    display: flex;
+    flex-direction: column;
+    padding-top: 40px;
+    text-align: center;
+}
+
+// common header content structure and animation
+@mixin headerStructureAndAnimation() {
+    @include animated(0s);
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 50px;
+}
+
+@mixin headerStyles() {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
 }

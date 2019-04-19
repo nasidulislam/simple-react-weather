@@ -1,0 +1,24 @@
+@import '../../core/variables.scss';
+@import '../Setup.scss';
+
+.setup-step-two-container {
+    @include containerStyles();
+
+    // top block content started
+    .setup-step-two-top {
+        @include headerStructureAndAnimation();
+
+        .step-two-top-content-one {
+            @include headerStyles();
+        }
+    }
+
+    // middle block content start
+    .setup-step-two-middle {
+        margin-bottom: 30px;
+
+        .step-two-middle-content-two {
+            padding-top: 40px;
+        }
+    }
+}
