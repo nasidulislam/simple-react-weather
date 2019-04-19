@@ -18,7 +18,7 @@ class App extends Component {
             currentViewIndex: null
         },
 
-        city: "",
+        cities: {},
         query: ""
     }
 
@@ -55,17 +55,28 @@ class App extends Component {
     }
 
     handlePlaceSelect = () => {
-        // Extract City From Address Object
         let addressObject = window.autocomplete.getPlace();
         let address = addressObject.address_components;
+        console.log(address);
+        console.log(addressObject);
 
-        // Check if address is valid
         if (address) {
-            // Set State
-            this.setState({
-                city: address[0].long_name,
-                query: addressObject.formatted_address
-            });
+            // copy state
+            const cities = { ...this.state.cities };
+            // extract info we need
+            const cityName = address[0].long_name;
+            const provinceName = address[address.length - 2].long_name
+            const countryLongName = address[address.length - 1].long_name;
+            const countryShortName = address[address.length - 1].short_name;
+            const mapUrl = addressObject.url;
+            const query = addressObject.formatted_address;
+            // create state object
+            const objKey = cityName + provinceName + countryShortName;
+            if(cities[objKey] !== null) {
+                cities[objKey] = { cityName, countryLongName, countryShortName, mapUrl };
+            }
+
+            this.setState({ cities, query });
         }
     }
 
