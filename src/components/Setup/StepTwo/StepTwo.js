@@ -11,7 +11,7 @@ class StepTwo extends React.Component {
             <div className="setup-step-two-container">
                 <div className="setup-step-two-top">
                     <span className="step-two-top-content-one">
-                        You can search by City name or Zip Code
+                        You can search by City
                     </span>
                 </div>
 
