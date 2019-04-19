@@ -7,8 +7,7 @@ import ListItem from './ListItem';
 class ListContainer extends React.Component {
     render() {
         return(
-            <div className="list-container">
-                <span className="list-container-header">You've selected</span>
+            <ul className="list-container">
 
                 {Object.keys(this.props.listItems).map(city => (
                     <ListItem
@@ -18,7 +17,7 @@ class ListContainer extends React.Component {
                     />
                 ))}
 
-            </div>
+            </ul>
         )
     }
 }

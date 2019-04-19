@@ -1,0 +1,7 @@
+.list-item {
+    margin-bottom: 20px;
+
+     & > span:first-of-type {
+         padding-left: 10px;
+     }
+}

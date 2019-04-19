@@ -1,0 +1,9 @@
+@import '../../core/variables.scss';
+@import '../Setup.scss';
+
+.list-container {
+    list-style: bengali;
+    list-style-position: inside;
+    font-size: 17px;
+    text-align: left;
+}
