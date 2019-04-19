@@ -76,6 +76,7 @@ class App extends Component {
             }
 
             this.setState({ cities, query });
+            localStorage.setItem("cities", JSON.stringify(cities));
         }
     }
 
@@ -107,7 +108,9 @@ class App extends Component {
             );
         } else if(view.currentViewName === "dashboard") {
             return(
-                <Dashboard nextStepButtonHandler={this.handleSetupSteps} />
+                <div className="app-container">
+                    <Dashboard />
+                </div>
             )
         } else {
             return(

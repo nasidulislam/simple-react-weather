@@ -4,7 +4,8 @@ import './Dashboard.scss';
 class Dashboard extends React.Component {
     render() {
         return(
-            <div>Dashboard</div>
+            <div className="dashboard-container">
+            </div>
         )
     }
 }
