@@ -57,8 +57,6 @@ class App extends Component {
     handlePlaceSelect = () => {
         let addressObject = window.autocomplete.getPlace();
         let address = addressObject.address_components;
-        console.log(address);
-        console.log(addressObject);
 
         if (address) {
             // copy state
@@ -74,7 +72,7 @@ class App extends Component {
             // create state object
             const objKey = cityName + provinceName + countryShortName;
             if(cities[objKey] !== null) {
-                cities[objKey] = { cityName, countryLongName, countryShortName, mapUrl, photos };
+                cities[objKey] = { cityName, provinceName,countryLongName, countryShortName, mapUrl, photos };
             }
 
             this.setState({ cities, query });
