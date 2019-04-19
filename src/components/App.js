@@ -69,11 +69,12 @@ class App extends Component {
             const countryLongName = address[address.length - 1].long_name;
             const countryShortName = address[address.length - 1].short_name;
             const mapUrl = addressObject.url;
+            const photos = addressObject.photos;
             const query = addressObject.formatted_address;
             // create state object
             const objKey = cityName + provinceName + countryShortName;
             if(cities[objKey] !== null) {
-                cities[objKey] = { cityName, countryLongName, countryShortName, mapUrl };
+                cities[objKey] = { cityName, countryLongName, countryShortName, mapUrl, photos };
             }
 
             this.setState({ cities, query });
@@ -102,6 +103,7 @@ class App extends Component {
                         nextStepButtonHandler={this.handleSetupSteps}
                         handlePlaceSelect={this.handlePlaceSelect}
                         addCityValue={this.state.query}
+                        cities={this.state.cities}
                     />
                 </div>
             );
