@@ -1,0 +1,15 @@
+@import '../../core/variables.scss';
+@import '../Setup.scss';
+
+.setup-step-two-container {
+    @include containerStyles();
+
+    // top block content started
+    .setup-step-two-top {
+        @include headerStructureAndAnimation();
+
+        .step-two-top-content-one {
+            @include headerStyles();
+        }
+    }
+}

@@ -25,7 +25,7 @@ class App extends Component {
         const nextViewName = view.viewArray[nextStepIndex]
 
         view.currentViewIndex = nextStepIndex;
-        view.nextViewName = nextViewName;
+        view.currentViewName = nextViewName;
         this.setState({ view });
         localStorage.setItem("currentViewName", nextViewName);
     };
