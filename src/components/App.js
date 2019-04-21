@@ -7,8 +7,8 @@ import StepTwo from './Setup/StepTwo/StepTwo';
 import Dashboard from './Dashboard/Dashboard';
 
 // other imports
-import './core/variables.scss';
-import './core/reset.scss';
+import './core/scss/variables.scss';
+import './core/scss/reset.scss';
 
 class App extends Component {
     state = {
@@ -20,13 +20,13 @@ class App extends Component {
 
         cities: {},
         query: ""
-    }
+    };
 
     // custom method start
     handleSetupSteps = () => {
         const view = { ...this.state.view };
         const nextStepIndex = view.currentViewIndex + 1;
-        const nextViewName = view.viewArray[nextStepIndex]
+        const nextViewName = view.viewArray[nextStepIndex];
 
         view.currentViewIndex = nextStepIndex;
         view.currentViewName = nextViewName;
@@ -52,7 +52,7 @@ class App extends Component {
             view.currentViewIndex = 0;
             this.setState({ view });
         }
-    }
+    };
 
     handlePlaceSelect = () => {
         let addressObject = window.autocomplete.getPlace();
@@ -63,7 +63,7 @@ class App extends Component {
             const cities = { ...this.state.cities };
             // extract info we need
             const cityName = address[0].long_name;
-            const provinceName = address[address.length - 2].long_name
+            const provinceName = address[address.length - 2].long_name;
             const countryLongName = address[address.length - 1].long_name;
             const countryShortName = address[address.length - 1].short_name;
             const mapUrl = addressObject.url;
@@ -76,8 +76,9 @@ class App extends Component {
             }
 
             this.setState({ cities, query });
+            localStorage.setItem("cities", JSON.stringify(cities));
         }
-    }
+    };
 
     // lifecycle methods
     componentDidMount() {
@@ -107,7 +108,11 @@ class App extends Component {
             );
         } else if(view.currentViewName === "dashboard") {
             return(
-                <Dashboard nextStepButtonHandler={this.handleSetupSteps} />
+                <div className="app-container">
+                    <Dashboard
+                        cities={this.state.cities}
+                    />
+                </div>
             )
         } else {
             return(
