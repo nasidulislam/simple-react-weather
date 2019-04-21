@@ -1,0 +1,8 @@
+@import '../core/scss/variables';
+
+.preview-card-container {
+	border: 1px solid $white;
+	margin-bottom: 30px;
+	min-height: 80px;
+	width: 100%;
+}

@@ -15,9 +15,10 @@ class Dashboard extends React.Component {
 
     componentDidMount() {
         let cities = {};
+
         if(isEmptyObj(this.props.cities)) {
             // on a fresh load --> empty state
-            cities = localStorage.getItem("cities");
+            cities = JSON.parse(localStorage.getItem("cities"));
         } else {
 	        // coming in through setup steps
             cities = this.props.cities;
@@ -30,11 +31,13 @@ class Dashboard extends React.Component {
         let cities = this.state.cities;
 
         if(isEmptyObj(cities)) {
-            return(<Error errorMessage="Something went wrong. Please try again later" />)
+            return(
+                <div className="dashboard-container">
+                    <Error errorMessage="Something went wrong. Please try again later" />
+                </div>
+            )
         } else {
-            cities = JSON.parse(cities);
-
-	        return(
+            return(
 		        <div className="dashboard-container">
 			        {Object.keys(cities).map(city => (
 				        <PreviewCard
