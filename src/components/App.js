@@ -19,7 +19,8 @@ class App extends Component {
         },
 
         cities: {},
-        query: ""
+        query: "",
+        tempUnit: "F"
     };
 
     // custom method start
@@ -69,15 +70,61 @@ class App extends Component {
             const mapUrl = addressObject.url;
             const photos = addressObject.photos;
             const query = addressObject.formatted_address;
-            // create state object
-            const objKey = cityName + provinceName + countryShortName;
-            if(cities[objKey] !== null) {
-                cities[objKey] = { cityName, provinceName,countryLongName, countryShortName, mapUrl, photos };
-            }
+            const weatherUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "," + countryShortName + "&apiKey=7bb01bafabc3c0d73e05a0731e700eed";
 
-            this.setState({ cities, query });
-            localStorage.setItem("cities", JSON.stringify(cities));
+            // call weather API with city info
+            fetch(weatherUrl)
+	            .then(res => res.json())
+                .then((data) => {
+                    const sunrise = new Date(data.sys.sunrise).toLocaleString();
+                    const sunset = new Date(data.sys.sunset).toLocaleString();
+                    const main = data.main;
+                    const weatherMain = data.weather[0];
+
+	                // create state object
+	                const objKey = cityName + provinceName + countryShortName;
+	                const weather = {
+	                    temp: main.temp,
+                        humidity: main.humidity,
+                        maxTemp: main.temp_max,
+                        minTemp: main.temp_min,
+                        cityId: data.id,
+                        sunset,
+                        sunrise,
+                        condition: weatherMain.main,
+                        conditionDescription: weatherMain.description,
+                        iconId: weatherMain.id
+                    };
+
+	                if(cities[objKey] !== null) {
+		                cities[objKey] = {
+		                    cityName,
+                            provinceName,
+                            countryLongName,
+                            countryShortName,
+                            mapUrl,
+                            photos,
+                            weather
+		                };
+	                }
+
+	                this.setState({ cities, query });
+	                localStorage.setItem("cities", JSON.stringify(cities));
+                },
+                (error) => {
+                    console.log(error);
+                });
         }
+    };
+
+    onToggle = (value) => {
+        const tempUnit = value ? "F" : "C";
+
+	    this.setState({ value: !value, tempUnit });
+    };
+
+    setCity = (cities) => {
+	    this.setState({ cities });
     };
 
     // lifecycle methods
@@ -111,6 +158,10 @@ class App extends Component {
                 <div className="app-container">
                     <Dashboard
                         cities={this.state.cities}
+                        onToggle={this.onToggle}
+                        value={this.state.value}
+                        setCity={this.setCity}
+                        tempUnit={this.state.tempUnit}
                     />
                 </div>
             )

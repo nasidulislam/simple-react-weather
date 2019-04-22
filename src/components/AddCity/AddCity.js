@@ -7,6 +7,10 @@ import Script from 'react-load-script';
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 
 class AddCity extends React.Component {
+    state = {
+        value: ""
+    };
+
     handleScriptLoad = () => {
         // Declare Options For Autocomplete
         var options = { types: ['(cities)'] };
@@ -17,7 +21,15 @@ class AddCity extends React.Component {
 
         // Fire Event when a suggested name is selected
         window.autocomplete.addListener('place_changed', this.props.handlePlaceSelect);
-    }
+    };
+
+    handleSearch = (value) => {
+        console.log(value);
+    };
+
+    handleChange = (value) => {
+        this.setState({ value });
+    };
 
     render() {
         return(
@@ -31,7 +43,9 @@ class AddCity extends React.Component {
                         placeholder=""
                         hintText="Search City"
                         value={this.props.addCityValue}
-                        />
+                        onRequestSearch={this.handleSearch}
+                        onChange={this.handleChange}
+                    />
                 </MuiThemeProvider>
             </div>
         )

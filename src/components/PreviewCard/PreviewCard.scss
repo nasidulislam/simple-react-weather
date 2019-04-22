@@ -1,0 +1,54 @@
+@import '../core/scss/variables';
+
+.preview-card-container {
+	align-items: center;
+	border: 2px solid $white;
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 30px;
+	min-height: 80px;
+	padding: 25px;
+	width: 100%;
+
+	// generated CSS for box shadow
+	-webkit-box-shadow: 9px 9px 13px -5px rgba(247,239,247,1);
+	-moz-box-shadow: 9px 9px 13px -5px rgba(247,239,247,1);
+	box-shadow: 9px 9px 13px -5px rgba(247,239,247,1);
+
+	.main-content {
+		font-size: 20px;
+		font-weight: bold;
+	}
+
+	.sub-content {
+		color: $spring-green;
+		font-size: 13px;
+	}
+
+	.left-rail-top-content {
+		display: flex;
+		margin-bottom: 15px;
+	}
+
+	.left-rail-city-name {
+		margin-right: 15px;
+	}
+
+	.left-rail-bottom-content {
+		color: $khaki;
+		display: flex;
+		flex-direction: column;
+	}
+
+	.left-rail-low-temp {
+		margin-bottom: 10px;
+	}
+
+	.left-rail-description-text {
+		text-transform: capitalize;
+	}
+
+	.left-rail-description {
+		margin-right: 10px;
+	}
+}
