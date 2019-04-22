@@ -26,6 +26,7 @@
 	}
 
 	.left-rail-top-content {
+		display: flex;
 		margin-bottom: 15px;
 	}
 
@@ -41,5 +42,13 @@
 
 	.left-rail-low-temp {
 		margin-bottom: 10px;
+	}
+
+	.left-rail-description-text {
+		text-transform: capitalize;
+	}
+
+	.left-rail-description {
+		margin-right: 10px;
 	}
 }

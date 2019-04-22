@@ -78,17 +78,22 @@ class App extends Component {
                 .then((data) => {
                     const sunrise = new Date(data.sys.sunrise).toLocaleString();
                     const sunset = new Date(data.sys.sunset).toLocaleString();
+                    const main = data.main;
+                    const weatherMain = data.weather[0];
+
 	                // create state object
 	                const objKey = cityName + provinceName + countryShortName;
 	                const weather = {
-	                    temp: data.main.temp,
-                        humidity: data.main.humidity,
-                        maxTemp: data.main.temp_max,
-                        minTemp: data.main.temp_min,
+	                    temp: main.temp,
+                        humidity: main.humidity,
+                        maxTemp: main.temp_max,
+                        minTemp: main.temp_min,
                         cityId: data.id,
                         sunset,
                         sunrise,
-                        description: data.weather[0].main
+                        condition: weatherMain.main,
+                        conditionDescription: weatherMain.description,
+                        iconId: weatherMain.id
                     };
 
 	                if(cities[objKey] !== null) {

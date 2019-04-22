@@ -1,6 +1,9 @@
 import React from 'react';
 import './PreviewCard.scss';
 
+// other imports
+import WeatherIcon from 'react-icons-weather';
+
 class PreviewCard extends React.Component {
 	handleTempUnitToggle = (temp, tempUnit) => {
 		if(tempUnit === "F") {
@@ -23,7 +26,17 @@ class PreviewCard extends React.Component {
 				<div className="preview-card-left-content">
 					<div className="left-rail-top-content">
 						<span className="left-rail-city-name main-content">{city.cityName}</span>
-						<span className="left-rail-description sub-content">{weatherData.description}</span>
+						<div className="left-rail-description-text">
+							<span className="left-rail-description sub-content">
+								{weatherData.condition} / {weatherData.conditionDescription}
+							</span>
+							<WeatherIcon
+								name="owm"
+								iconId={weatherData.iconId}
+								flip="horizontal"
+								rotate="90"
+							/>
+						</div>
 					</div>
 					<div className="left-rail-bottom-content">
 						<span className="left-rail-low-temp">Low: {minTemp}</span>
