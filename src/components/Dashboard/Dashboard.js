@@ -4,6 +4,7 @@ import './Dashboard.scss';
 // component imports
 import PreviewCard from '../PreviewCard/PreviewCard';
 import Error from '../Error/Error';
+import ToggleButton from 'react-toggle-button';
 
 // other imports
 import isEmptyObj from '../core/js/helpers';
@@ -39,13 +40,30 @@ class Dashboard extends React.Component {
         } else {
             return(
 		        <div className="dashboard-container">
-			        {Object.keys(cities).map(city => (
-				        <PreviewCard
-					        key={city}
-					        index={city}
-					        city={cities[city]}
-				        />
-			        ))}
+                    <div className="dashboard-header">
+                        <div className="dashboard-header-left-content">Add button</div>
+                        <div className="dashboard-header-right-content">
+	                        <ToggleButton
+		                        value={ this.state.value || false }
+                                activeLabel="C"
+                                inactiveLabel="F"
+		                        onToggle={(value) => {
+			                        this.setState({
+				                        value: !value,
+			                        })
+		                        }} />
+
+                        </div>
+                    </div>
+                    <div className="dashboard-preview-card-list">
+                        {Object.keys(cities).map(city => (
+                            <PreviewCard
+                                key={city}
+                                index={city}
+                                city={cities[city]}
+                            />
+                        ))}
+                    </div>
 		        </div>
 	        )
         }
