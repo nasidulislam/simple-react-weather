@@ -19,7 +19,8 @@ class App extends Component {
         },
 
         cities: {},
-        query: ""
+        query: "",
+        tempUnit: "F"
     };
 
     // custom method start
@@ -112,9 +113,9 @@ class App extends Component {
     };
 
     onToggle = (value) => {
-	    this.setState({
-		    value: !value,
-	    });
+        const tempUnit = value ? "F" : "C";
+
+	    this.setState({ value: !value, tempUnit });
     };
 
     setCity = (cities) => {
@@ -155,6 +156,7 @@ class App extends Component {
                         onToggle={this.onToggle}
                         value={this.state.value}
                         setCity={this.setCity}
+                        tempUnit={this.state.tempUnit}
                     />
                 </div>
             )

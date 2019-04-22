@@ -57,6 +57,7 @@ class Dashboard extends React.Component {
                                 key={city}
                                 index={city}
                                 city={cities[city]}
+                                tempUnit={this.props.tempUnit}
                             />
                         ))}
                     </div>
