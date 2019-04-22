@@ -12,14 +12,23 @@ class PreviewCard extends React.Component {
 
 	render() {
 		const city = this.props.city;
-		const kelvinTemp = city.weather.temp;
+		const weatherData = city.weather;
 		const tempUnit = this.props.tempUnit;
-		const temp = Math.ceil(this.handleTempUnitToggle(kelvinTemp, tempUnit)) + " °" + tempUnit;
+		const temp = Math.ceil(this.handleTempUnitToggle(weatherData.temp, tempUnit)) + " °" + tempUnit;
+		const minTemp = Math.ceil(this.handleTempUnitToggle(weatherData.minTemp, tempUnit)) + " °" + tempUnit;
+		const maxTemp = Math.ceil(this.handleTempUnitToggle(weatherData.maxTemp, tempUnit)) + " °" + tempUnit;
 
 		return(
 			<div className="preview-card-container">
 				<div className="preview-card-left-content">
-					<span className="left-rail-city-name main-content">{city.cityName}</span>
+					<div className="left-rail-top-content">
+						<span className="left-rail-city-name main-content">{city.cityName}</span>
+						<span className="left-rail-description sub-content">{weatherData.description}</span>
+					</div>
+					<div className="left-rail-bottom-content">
+						<span className="left-rail-low-temp">Low: {minTemp}</span>
+						<span className="left-rail-high-temp">High: {maxTemp}</span>
+					</div>
 				</div>
 				<div className="preview-card-right-content">
 					<span className="right-rail-temp main-content">{temp}</span>
