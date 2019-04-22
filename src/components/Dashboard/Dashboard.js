@@ -10,9 +10,9 @@ import ToggleButton from 'react-toggle-button';
 import isEmptyObj from '../core/js/helpers';
 
 class Dashboard extends React.Component {
-    state = {
-      cities: {}
-    };
+    onToggle = (value) => {
+        this.props.onToggle(value);
+	};
 
     componentDidMount() {
         let cities = {};
@@ -25,11 +25,11 @@ class Dashboard extends React.Component {
             cities = this.props.cities;
         }
 
-        this.setState({ cities });
+        this.props.setCity(cities);
     }
 
     render() {
-        let cities = this.state.cities;
+        let cities = this.props.cities;
 
         if(isEmptyObj(cities)) {
             return(
@@ -44,14 +44,10 @@ class Dashboard extends React.Component {
                         <div className="dashboard-header-left-content">Add button</div>
                         <div className="dashboard-header-right-content">
 	                        <ToggleButton
-		                        value={ this.state.value || false }
+		                        value={ this.props.value || false }
                                 activeLabel="C"
                                 inactiveLabel="F"
-		                        onToggle={(value) => {
-			                        this.setState({
-				                        value: !value,
-			                        })
-		                        }} />
+		                        onToggle={this.onToggle} />
 
                         </div>
                     </div>

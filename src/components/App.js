@@ -75,9 +75,21 @@ class App extends Component {
             fetch(weatherUrl)
 	            .then(res => res.json())
                 .then((data) => {
-                   console.log(data);
+                    const sunrise = new Date(data.sys.sunrise).toLocaleString();
+                    const sunset = new Date(data.sys.sunset).toLocaleString();
 	                // create state object
 	                const objKey = cityName + provinceName + countryShortName;
+	                const weather = {
+	                    temp: data.main.temp,
+                        humidity: data.main.humidity,
+                        maxTemp: data.main.temp_max,
+                        minTemp: data.main.temp_min,
+                        cityId: data.id,
+                        sunset,
+                        sunrise,
+                        description: data.weather[0].main
+                    };
+
 	                if(cities[objKey] !== null) {
 		                cities[objKey] = {
 		                    cityName,
@@ -86,7 +98,7 @@ class App extends Component {
                             countryShortName,
                             mapUrl,
                             photos,
-                            weather: data
+                            weather
 		                };
 	                }
 
@@ -97,6 +109,16 @@ class App extends Component {
                     console.log(error);
                 });
         }
+    };
+
+    onToggle = (value) => {
+	    this.setState({
+		    value: !value,
+	    });
+    };
+
+    setCity = (cities) => {
+	    this.setState({ cities });
     };
 
     // lifecycle methods
@@ -130,6 +152,9 @@ class App extends Component {
                 <div className="app-container">
                     <Dashboard
                         cities={this.state.cities}
+                        onToggle={this.onToggle}
+                        value={this.state.value}
+                        setCity={this.setCity}
                     />
                 </div>
             )

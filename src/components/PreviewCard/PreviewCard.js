@@ -12,7 +12,7 @@ class PreviewCard extends React.Component {
 					<span>{city.cityName}</span>
 				</div>
 				<div className="preview-card-right-content">
-					<span>{weatherData.main.temp}</span>
+					<span>{weatherData.temp}</span>
 				</div>
 			</div>
 		)
