@@ -1,6 +1,7 @@
 @import '../core/scss/variables';
 
 .preview-card-container {
+	align-items: center;
 	border: 2px solid $white;
 	display: flex;
 	justify-content: space-between;
@@ -13,4 +14,9 @@
 	-webkit-box-shadow: 9px 9px 13px -5px rgba(247,239,247,1);
 	-moz-box-shadow: 9px 9px 13px -5px rgba(247,239,247,1);
 	box-shadow: 9px 9px 13px -5px rgba(247,239,247,1);
+
+	.main-content {
+		font-size: 20px;
+		font-weight: bold;
+	}
 }
