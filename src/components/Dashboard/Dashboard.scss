@@ -1,5 +1,7 @@
 @import '../core/scss/variables';
 
+$add-city-button-dimensions: 40px;
+
 .dashboard-container {
 	padding: 40px 20px 20px 20px;
 
@@ -12,5 +14,12 @@
 	.dashboard-header-right-content {
 		display: flex;
 		align-items: center;
+	}
+
+	.dashboard-header-left-content {
+		.dashboard-add-city-icon-button {
+			height: $add-city-button-dimensions;
+			width: $add-city-button-dimensions;
+		}
 	}
 }
