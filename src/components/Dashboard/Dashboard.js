@@ -5,6 +5,8 @@ import './Dashboard.scss';
 import PreviewCard from '../PreviewCard/PreviewCard';
 import Error from '../Error/Error';
 import ToggleButton from 'react-toggle-button';
+import Fab from '@material-ui/core/Fab';
+import AddIcon from '@material-ui/icons/Add';
 
 // other imports
 import isEmptyObj from '../core/js/helpers';
@@ -41,7 +43,11 @@ class Dashboard extends React.Component {
             return(
 		        <div className="dashboard-container">
                     <div className="dashboard-header">
-                        <div className="dashboard-header-left-content">Add button</div>
+                        <div className="dashboard-header-left-content">
+	                        <Fab color="primary" aria-label="Add" className="dashboard-add-city-button">
+		                        <AddIcon />
+	                        </Fab>
+                        </div>
                         <div className="dashboard-header-right-content">
 	                        <ToggleButton
 		                        value={ this.props.value || false }
