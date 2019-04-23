@@ -5,6 +5,7 @@ import './Dashboard.scss';
 import PreviewCard from '../PreviewCard/PreviewCard';
 import Error from '../Error/Error';
 import ToggleButton from 'react-toggle-button';
+import IconButton from '../IconButton/IconButton';
 
 // other imports
 import isEmptyObj from '../core/js/helpers';
@@ -41,7 +42,13 @@ class Dashboard extends React.Component {
             return(
 		        <div className="dashboard-container">
                     <div className="dashboard-header">
-                        <div className="dashboard-header-left-content">Add button</div>
+                        <div className="dashboard-header-left-content">
+	                        <IconButton
+		                        color="primary"
+		                        label="Add"
+		                        classList="dashboard-add-city-icon-button"
+	                        />
+                        </div>
                         <div className="dashboard-header-right-content">
 	                        <ToggleButton
 		                        value={ this.props.value || false }
