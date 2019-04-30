@@ -33,27 +33,29 @@ class App extends Component {
 
 		view.currentViewIndex = nextStepIndex;
 		view.currentViewName = nextViewName;
-		this.setState({view});
+		this.setView(view);
+
+		// save current view in local storage for persistence
 		localStorage.setItem("currentViewName", nextViewName);
 	};
 
 	handleLoadingPersistentView = () => {
-		// save current view in local storage for persistence
+		// get saved current view from local storage for persistence
 		const currentViewName = localStorage.getItem("currentViewName");
 		const view = {...this.state.view};
 
 		if (currentViewName !== null) {
 			const currentViewIndex = view.viewArray.findIndex((elem) => {
-				return elem === "currentViewName";
+				return elem === currentViewName;
 			});
 
 			view.currentViewName = currentViewName;
 			view.currentViewIndex = currentViewIndex;
-			this.setState({view});
+			this.setView(view);
 		} else {
 			view.currentViewName = "step-one";
 			view.currentViewIndex = 0;
-			this.setState({view});
+			this.setView(view);
 		}
 	};
 
@@ -126,7 +128,11 @@ class App extends Component {
 	};
 
 	setCity = (cities) => {
-		this.setState({cities});
+		this.setState({ cities });
+	};
+
+	setView = (view) => {
+		this.setState({ view });
 	};
 
 	showCityDetails = (city) => {
@@ -176,7 +182,13 @@ class App extends Component {
 		} else if (view.currentViewName === "weather-detail") {
 			return (
 				<div className="app-container">
-					<WeatherDetail city={this.state.cityBeingViewed}/>
+					<WeatherDetail
+						city={this.state.cityBeingViewed}
+						cities={this.state.cities}
+						view={this.state.view}
+						setView={this.setView}
+						setCity={this.setCity}
+					/>
 				</div>
 			)
 		} else {
