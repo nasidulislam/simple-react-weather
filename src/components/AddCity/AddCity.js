@@ -1,10 +1,13 @@
 import React from 'react';
 import './AddCity.scss';
 
-// other imports
+// component imports
 import SearchBar from 'material-ui-search-bar';
-import Script from 'react-load-script';
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
+
+// other imports
+import Script from 'react-load-script';
+import content from '../core/js/content';
 
 class AddCity extends React.Component {
     state = {
@@ -41,7 +44,7 @@ class AddCity extends React.Component {
                         id="autocomplete"
                         className="add-city-search-bar"
                         placeholder=""
-                        hintText="Search City"
+                        hintText={content.addCity.searchBarHintText}
                         value={this.props.addCityValue}
                         onRequestSearch={this.handleSearch}
                         onChange={this.handleChange}

@@ -1,8 +1,11 @@
 import React from 'react';
 import './PreviewCard.scss';
 
-// other imports
+// component imports
 import WeatherIcon from 'react-icons-weather';
+
+// other import
+import content from '../core/js/content';
 
 class PreviewCard extends React.Component {
 	handleTempUnitToggle = (temp, tempUnit) => {
@@ -39,8 +42,8 @@ class PreviewCard extends React.Component {
 						</div>
 					</div>
 					<div className="left-rail-bottom-content">
-						<span className="left-rail-low-temp">Low: {minTemp}</span>
-						<span className="left-rail-high-temp">High: {maxTemp}</span>
+						<span className="left-rail-low-temp">{content.previewCard.leftRail.low}: {minTemp}</span>
+						<span className="left-rail-high-temp">{content.previewCard.leftRail.high}: {maxTemp}</span>
 					</div>
 				</div>
 				<div className="preview-card-right-content">
