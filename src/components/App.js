@@ -127,6 +127,10 @@ class App extends Component {
 	    this.setState({ cities });
     };
 
+	showCityDetails = (city) => {
+		console.log(city);
+	};
+
     // lifecycle methods
     componentDidMount() {
         // this handles persistent view in a specific device
@@ -162,6 +166,7 @@ class App extends Component {
                         value={this.state.value}
                         setCity={this.setCity}
                         tempUnit={this.state.tempUnit}
+                        showCityDetails={this.showCityDetails}
                     />
                 </div>
             )

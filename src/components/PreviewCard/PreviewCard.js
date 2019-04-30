@@ -16,6 +16,10 @@ class PreviewCard extends React.Component {
 		}
 	};
 
+	showDetails = () => {
+		this.props.showCityDetails(this.props.city);
+	};
+
 	render() {
 		const city = this.props.city;
 		const weatherData = city.weather;
@@ -25,7 +29,7 @@ class PreviewCard extends React.Component {
 		const maxTemp = Math.ceil(this.handleTempUnitToggle(weatherData.maxTemp, tempUnit)) + " °" + tempUnit;
 
 		return(
-			<div className="preview-card-container">
+			<div className="preview-card-container" onClick={this.showDetails}>
 				<div className="preview-card-left-content">
 					<div className="left-rail-top-content">
 						<span className="left-rail-city-name main-content">{city.cityName}</span>
