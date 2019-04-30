@@ -8,6 +8,7 @@ import ToggleButton from 'react-toggle-button';
 
 // other imports
 import isEmptyObj from '../core/js/helpers';
+import content from '../core/js/content';
 
 class Dashboard extends React.Component {
     onToggle = (value) => {
@@ -34,7 +35,7 @@ class Dashboard extends React.Component {
         if(isEmptyObj(cities)) {
             return(
                 <div className="dashboard-container">
-                    <Error errorMessage="Something went wrong. Please try again later" />
+                    <Error errorMessage={content.dashboard.errorMessage} />
                 </div>
             )
         } else {
@@ -45,8 +46,8 @@ class Dashboard extends React.Component {
                         <div className="dashboard-header-right-content">
 	                        <ToggleButton
 		                        value={ this.props.value || false }
-                                activeLabel="C"
-                                inactiveLabel="F"
+                                activeLabel={content.dashboard.toggleButton.activeLabel}
+                                inactiveLabel={content.dashboard.toggleButton.inactiveLabel}
 		                        onToggle={this.onToggle} />
 
                         </div>
