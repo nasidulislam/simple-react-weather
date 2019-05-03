@@ -26,8 +26,15 @@ class WeatherDetail extends React.Component {
 	};
 
 	render() {
+		const currentCity = this.props.city || {};
 		return(
-			<div className="weather-detail-container">something</div>
+			<div className="weather-detail-container">
+				<div className="weather-detail-header">
+					<span className="header-city-name">{currentCity.cityName}</span>
+					<span className="header-province-name">{currentCity.provinceName}, {currentCity.countryLongName}</span>
+					<a href={currentCity.mapUrl} target="_blank" className="city-map-link">(See in map)</a>
+				</div>
+			</div>
 		)
 	}
 }

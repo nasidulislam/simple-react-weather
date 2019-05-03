@@ -1,0 +1,25 @@
+@import "../core/scss/variables";
+
+.weather-detail-container {
+	padding-top: 40px;
+
+	.weather-detail-header {
+		align-items: center;
+		display: flex;
+		flex-direction: column;
+
+		.header-city-name {
+			font-size: 1.8rem;
+		}
+
+		.header-province-name {
+			margin-top: 10px;
+		}
+
+		.city-map-link {
+			color: $white;
+			font-size: 0.8rem;
+			margin-top: 8px;
+		}
+	}
+}
