@@ -136,12 +136,21 @@ class App extends Component {
 	};
 
 	showCityDetails = (city) => {
-		this.setState({cityBeingViewed: city});
+		this.setState({ cityBeingViewed: city });
 		this.handleSetupSteps();
 	};
 
 	backButton = () => {
-		console.log('here');
+		const view = {...this.state.view};
+		const nextStepIndex = view.currentViewIndex - 1;
+		const nextViewName = view.viewArray[nextStepIndex];
+
+		view.currentViewIndex = nextStepIndex;
+		view.currentViewName = nextViewName;
+		this.setView(view);
+
+		// save current view in local storage for persistence
+		localStorage.setItem("currentViewName", nextViewName);
 	};
 
 	// lifecycle methods
