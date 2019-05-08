@@ -12,23 +12,25 @@ import isEmptyObj from '../core/js/helpers';
 import content from '../core/js/content';
 
 class Dashboard extends React.Component {
+	// custom methods
     onToggle = (value) => {
         this.props.onToggle(value);
 	};
 
+    // life cycle methods
     componentDidMount() {
         let cities = {};
 
         if(isEmptyObj(this.props.cities)) {
-            // on a fresh load --> empty state
+            // on a fresh load --> empty state, get cities from local storage for persistence
             cities = JSON.parse(localStorage.getItem("cities"));
         } else {
-	        // coming in through setup steps
+	        // coming in through setup steps, city props are available
             cities = this.props.cities;
         }
 
         this.props.setCity(cities);
-    }
+    };
 
     render() {
         let cities = this.props.cities;
@@ -66,13 +68,14 @@ class Dashboard extends React.Component {
                                 index={city}
                                 city={cities[city]}
                                 tempUnit={this.props.tempUnit}
+                                showCityDetails={this.props.showCityDetails}
                             />
                         ))}
                     </div>
 		        </div>
 	        )
         }
-    }
+    };
 }
 
 export default Dashboard;
