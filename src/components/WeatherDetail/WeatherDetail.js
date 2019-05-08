@@ -1,9 +1,12 @@
 import React from 'react';
 import './WeatherDetail.scss';
 
+// component imports
+import Button from '../Button/Button';
+
 // other imports
 import isEmptyObj from '../core/js/helpers';
-import content from '../core/js/content';
+import content from "../core/js/content";
 
 class WeatherDetail extends React.Component {
 	componentDidMount() {
@@ -30,9 +33,19 @@ class WeatherDetail extends React.Component {
 		return(
 			<div className="weather-detail-container">
 				<div className="weather-detail-header">
-					<span className="header-city-name">{currentCity.cityName}</span>
-					<span className="header-province-name">{currentCity.provinceName}, {currentCity.countryLongName}</span>
-					<a href={currentCity.mapUrl} target="_blank" className="city-map-link">(See in map)</a>
+					<Button
+						containerClass="detail-header-back-button-container"
+						buttonClass="detail-header-back-button"
+						label={content.weatherDetail.backButton.label}
+						variant="icon-button"
+						clickHandler={this.props.backButton}
+					/>
+
+					<div className="detail-header-main">
+						<span className="header-city-name">{currentCity.cityName}</span>
+						<span className="header-province-name">{currentCity.provinceName}, {currentCity.countryLongName}</span>
+						<a href={currentCity.mapUrl} target="_blank" className="city-map-link">(See in map)</a>
+					</div>
 				</div>
 			</div>
 		)

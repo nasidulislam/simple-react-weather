@@ -34,6 +34,6 @@ const StepOne = (props) => {
             </div>
         </div>
     )
-}
+};
 
 export default StepOne;

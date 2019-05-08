@@ -1,11 +1,25 @@
 @import '../core/scss/variables';
 
+$icon-button-size: 30px;
+
 .button {
-    background-color: $orange;
     border: none;
     border-radius: $button-border-radius;
     color: $black;
-    font-weight: bold;
     height: 42px;
     width: 160px;
+
+    &.primary-button {
+        background-color: $orange;
+        font-weight: bold;
+    }
+
+    &.icon-button {
+        background-color: $gray;
+        border-radius: 50%;
+        font-size: 12px;
+        height: $icon-button-size;
+        padding: 0;
+        width: $icon-button-size;
+    }
 }

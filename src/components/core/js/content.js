@@ -41,6 +41,12 @@ const content = {
 			low: "Low",
 			high: "High"
 		}
+	},
+
+	weatherDetail: {
+		backButton: {
+			label: "<--"
+		}
 	}
 };
 

@@ -3,11 +3,13 @@
 .weather-detail-container {
 	padding-top: 40px;
 
-	.weather-detail-header {
+	.detail-header-main {
 		align-items: center;
 		display: flex;
 		flex-direction: column;
+	}
 
+	.weather-detail-header {
 		.header-city-name {
 			font-size: 1.8rem;
 		}
@@ -21,5 +23,9 @@
 			font-size: 0.8rem;
 			margin-top: 8px;
 		}
+	}
+
+	.detail-header-back-button-container {
+		position: absolute;
 	}
 }

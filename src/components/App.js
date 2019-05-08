@@ -140,6 +140,10 @@ class App extends Component {
 		this.handleSetupSteps();
 	};
 
+	backButton = () => {
+		console.log('here');
+	};
+
 	// lifecycle methods
 	componentDidMount() {
 		// this handles persistent view in a specific device
@@ -188,6 +192,7 @@ class App extends Component {
 						view={this.state.view}
 						setView={this.setView}
 						setCity={this.setCity}
+						backButton={this.backButton}
 					/>
 				</div>
 			)
