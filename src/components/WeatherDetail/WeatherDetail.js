@@ -3,12 +3,19 @@ import './WeatherDetail.scss';
 
 // component imports
 import Button from '../Button/Button';
+import ToggleButton from 'react-toggle-button';
 
 // other imports
 import isEmptyObj from '../core/js/helpers';
 import content from "../core/js/content";
 
 class WeatherDetail extends React.Component {
+	// custom methods
+	onToggle = (value) => {
+		this.props.onToggle(value);
+	};
+
+	// life cycle methods
 	componentDidMount() {
 		let cities = {};
 		let view = { ...this.props.view } || {};
@@ -34,7 +41,7 @@ class WeatherDetail extends React.Component {
 			<div className="weather-detail-container">
 				<div className="weather-detail-header">
 					<Button
-						containerClass="detail-header-back-button-container"
+						containerClass="detail-header-left-content"
 						buttonClass="detail-header-back-button"
 						label={content.weatherDetail.backButton.label}
 						variant="icon-button"
@@ -44,7 +51,15 @@ class WeatherDetail extends React.Component {
 					<div className="detail-header-main">
 						<span className="header-city-name">{currentCity.cityName}</span>
 						<span className="header-province-name">{currentCity.provinceName}, {currentCity.countryLongName}</span>
-						<a href={currentCity.mapUrl} target="_blank" className="city-map-link">(See in map)</a>
+						<a href={currentCity.mapUrl} target="_blank" rel="noopener noreferrer" className="city-map-link">(See in map)</a>
+					</div>
+
+					<div className="detail-header-right-content">
+						<ToggleButton
+							value={ this.props.value || false }
+							activeLabel={content.common.toggleButton.activeLabel}
+							inactiveLabel={content.common.toggleButton.inactiveLabel}
+							onToggle={this.onToggle} />
 					</div>
 				</div>
 			</div>

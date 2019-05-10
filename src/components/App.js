@@ -153,6 +153,14 @@ class App extends Component {
 		localStorage.setItem("currentViewName", nextViewName);
 	};
 
+	handleTempUnitToggle = (temp, tempUnit) => {
+		if(tempUnit === "F") {
+			return ((temp - 273.15) * 1.8) + 32
+		} else {
+			return temp - 273.15
+		}
+	};
+
 	// lifecycle methods
 	componentDidMount() {
 		// this handles persistent view in a specific device
@@ -189,6 +197,7 @@ class App extends Component {
 						setCity={this.setCity}
 						tempUnit={this.state.tempUnit}
 						showCityDetails={this.showCityDetails}
+						handleTempUnitToggle={this.handleTempUnitToggle}
 					/>
 				</div>
 			)
@@ -202,6 +211,8 @@ class App extends Component {
 						setView={this.setView}
 						setCity={this.setCity}
 						backButton={this.backButton}
+						onToggle={this.onToggle}
+						value={this.state.value}
 					/>
 				</div>
 			)

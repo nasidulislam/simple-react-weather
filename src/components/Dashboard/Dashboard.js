@@ -55,8 +55,8 @@ class Dashboard extends React.Component {
                         <div className="dashboard-header-right-content">
 	                        <ToggleButton
 		                        value={ this.props.value || false }
-                                activeLabel={content.dashboard.toggleButton.activeLabel}
-                                inactiveLabel={content.dashboard.toggleButton.inactiveLabel}
+                                activeLabel={content.common.toggleButton.activeLabel}
+                                inactiveLabel={content.common.toggleButton.inactiveLabel}
 		                        onToggle={this.onToggle} />
 
                         </div>
@@ -69,6 +69,7 @@ class Dashboard extends React.Component {
                                 city={cities[city]}
                                 tempUnit={this.props.tempUnit}
                                 showCityDetails={this.props.showCityDetails}
+                                handleTempUnitToggle={this.props.handleTempUnitToggle}
                             />
                         ))}
                     </div>
