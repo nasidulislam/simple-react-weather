@@ -29,11 +29,7 @@ const content = {
 	},
 
 	dashboard: {
-		errorMessage: "Something went wrong. Please try again later",
-		toggleButton: {
-			activeLabel: "C",
-			inactiveLabel: "F"
-		}
+		errorMessage: "Something went wrong. Please try again later"
 	},
 
 	previewCard: {
@@ -46,6 +42,13 @@ const content = {
 	weatherDetail: {
 		backButton: {
 			label: "<--"
+		}
+	},
+
+	common: {
+		toggleButton: {
+			activeLabel: "C",
+			inactiveLabel: "F"
 		}
 	}
 };

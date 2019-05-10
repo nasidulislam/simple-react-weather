@@ -8,14 +8,6 @@ import WeatherIcon from 'react-icons-weather';
 import content from '../core/js/content';
 
 class PreviewCard extends React.Component {
-	handleTempUnitToggle = (temp, tempUnit) => {
-		if(tempUnit === "F") {
-			return ((temp - 273.15) * 1.8) + 32
-		} else {
-			return temp - 273.15
-		}
-	};
-
 	showDetails = () => {
 		this.props.showCityDetails(this.props.city);
 	};
@@ -24,9 +16,9 @@ class PreviewCard extends React.Component {
 		const city = this.props.city;
 		const weatherData = city.weather;
 		const tempUnit = this.props.tempUnit;
-		const temp = Math.ceil(this.handleTempUnitToggle(weatherData.temp, tempUnit)) + " °" + tempUnit;
-		const minTemp = Math.ceil(this.handleTempUnitToggle(weatherData.minTemp, tempUnit)) + " °" + tempUnit;
-		const maxTemp = Math.ceil(this.handleTempUnitToggle(weatherData.maxTemp, tempUnit)) + " °" + tempUnit;
+		const temp = Math.ceil(this.props.handleTempUnitToggle(weatherData.temp, tempUnit)) + " °" + tempUnit;
+		const minTemp = Math.ceil(this.props.handleTempUnitToggle(weatherData.minTemp, tempUnit)) + " °" + tempUnit;
+		const maxTemp = Math.ceil(this.props.handleTempUnitToggle(weatherData.maxTemp, tempUnit)) + " °" + tempUnit;
 
 		return(
 			<div className="preview-card-container" onClick={this.showDetails}>

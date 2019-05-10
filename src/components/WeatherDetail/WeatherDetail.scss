@@ -10,6 +10,9 @@
 	}
 
 	.weather-detail-header {
+		display: flex;
+		justify-content: space-between;
+
 		.header-city-name {
 			font-size: 1.8rem;
 		}
@@ -23,9 +26,5 @@
 			font-size: 0.8rem;
 			margin-top: 8px;
 		}
-	}
-
-	.detail-header-back-button-container {
-		position: absolute;
 	}
 }
