@@ -2,19 +2,14 @@ import React from 'react';
 import './WeatherDetail.scss';
 
 // component imports
-import ToggleButton from 'react-toggle-button';
 import BackIconButton from '../IconButtons/BackIconButton';
+import Error from '../Error/Error';
 
 // other imports
 import isEmptyObj from '../../core/js/helpers';
 import content from "../../core/js/content";
 
 class WeatherDetail extends React.Component {
-	// custom methods
-	onToggle = (value) => {
-		this.props.onToggle(value);
-	};
-
 	// life cycle methods
 	componentDidMount() {
 		let cities = {};
@@ -37,33 +32,34 @@ class WeatherDetail extends React.Component {
 
 	render() {
 		const currentCity = this.props.city || {};
-		return(
-			<div className="weather-detail-container">
-				<div className="weather-detail-header">
+
+		if(!isEmptyObj(currentCity)) {
+			return(
+				<div className="weather-detail-container">
+					<div className="weather-detail-header">
+						<div className="detail-header-main">
+							<span className="header-city-name">{currentCity.cityName}</span>
+							<span className="header-temperature">{this.props.handleTempUnitToggle(currentCity.weather.temp, this.props.tempUnit)}</span>
+							<a href={currentCity.mapUrl} target="_blank" rel="noopener noreferrer" className="city-map-link">(See in map)</a>
+						</div>
+					</div>
+
 					<BackIconButton
 						color="primary"
 						label={content.weatherDetail.backButton.label}
-						buttonClass="detail-header-back-button"
-						containerClass="detail-header-back-button-container"
+						buttonClass="detail-back-button"
+						containerClass="detail-back-button-container"
 						clickHandler={this.props.backButton}
 					/>
-
-					<div className="detail-header-main">
-						<span className="header-city-name">{currentCity.cityName}</span>
-						<span className="header-province-name">{currentCity.provinceName}, {currentCity.countryLongName}</span>
-						<a href={currentCity.mapUrl} target="_blank" rel="noopener noreferrer" className="city-map-link">(See in map)</a>
-					</div>
-
-					<div className="detail-header-right-content">
-						<ToggleButton
-							value={ this.props.value || false }
-							activeLabel={content.common.toggleButton.activeLabel}
-							inactiveLabel={content.common.toggleButton.inactiveLabel}
-							onToggle={this.onToggle} />
-					</div>
 				</div>
-			</div>
-		)
+			)
+		} else {
+			return(
+				<div className="weather-detail-container">
+					<Error errorMessage={content.common.errorMessage} />
+				</div>
+			)
+		}
 	}
 }
 

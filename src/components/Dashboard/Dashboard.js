@@ -38,7 +38,7 @@ class Dashboard extends React.Component {
         if(isEmptyObj(cities)) {
             return(
                 <div className="dashboard-container">
-                    <Error errorMessage={content.dashboard.errorMessage} />
+                    <Error errorMessage={content.common.errorMessage} />
                 </div>
             )
         } else {

@@ -165,9 +165,9 @@ class App extends Component {
 
 	handleTempUnitToggle = (temp, tempUnit) => {
 		if (tempUnit === "F") {
-			return ((temp - 273.15) * 1.8) + 32
+			return Math.ceil(((temp - 273.15) * 1.8) + 32)
 		} else {
-			return temp - 273.15
+			return Math.ceil(temp - 273.15)
 		}
 	};
 
@@ -221,8 +221,8 @@ class App extends Component {
 						setView={this.setView}
 						setCity={this.setCity}
 						backButton={this.backButton}
-						onToggle={this.onToggle}
-						value={this.state.value}
+						tempUnit={this.state.tempUnit}
+						handleTempUnitToggle={this.handleTempUnitToggle}
 					/>
 				</div>
 			)
