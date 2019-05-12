@@ -1,7 +1,7 @@
 import React from 'react';
 import Fab from '@material-ui/core/Fab';
 import ArrowLeft from '@material-ui/icons/ArrowLeft';
-import './IconButtons.scss'
+import './IconButtons.scss';
 
 const BackIconButton = (props) => {
 	return(
