@@ -10,7 +10,6 @@ import WeatherDetail from './WeatherDetail/WeatherDetail';
 // other imports
 import '../core/scss/variables.scss';
 import '../core/scss/reset.scss';
-import getCurrentWeather from '../services/weather';
 
 class App extends Component {
 	state = {
@@ -76,8 +75,6 @@ class App extends Component {
 			const mapUrl = addressObject.url;
 			const query = addressObject.formatted_address;
 			const weatherUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "," + countryShortName + "&apiKey=7bb01bafabc3c0d73e05a0731e700eed";
-
-			getCurrentWeather(weatherUrl);
 
 			// call weather API with city info
 			fetch(weatherUrl)
