@@ -6,7 +6,7 @@ import Button from '../../Button/Button';
 import '../Setup.scss';
 
 // other imports
-import content from '../../core/js/content';
+import content from '../../../core/js/content';
 
 const StepOne = (props) => {
     return (

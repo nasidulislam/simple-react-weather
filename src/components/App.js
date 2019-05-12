@@ -8,8 +8,8 @@ import Dashboard from './Dashboard/Dashboard';
 import WeatherDetail from './WeatherDetail/WeatherDetail';
 
 // other imports
-import './core/scss/variables.scss';
-import './core/scss/reset.scss';
+import '../core/scss/variables.scss';
+import '../core/scss/reset.scss';
 
 class App extends Component {
 	state = {

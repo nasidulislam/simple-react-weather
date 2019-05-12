@@ -7,7 +7,7 @@ import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 
 // other imports
 import Script from 'react-load-script';
-import content from '../core/js/content';
+import content from '../../core/js/content';
 
 class AddCity extends React.Component {
     state = {

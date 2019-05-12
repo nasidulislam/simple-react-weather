@@ -7,7 +7,7 @@ import Button from '../../Button/Button';
 import ListContainer from './ListContainer';
 
 // other imports
-import content from '../../core/js/content';
+import content from '../../../core/js/content';
 
 class StepTwo extends React.Component {
     render() {

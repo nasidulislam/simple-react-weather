@@ -5,7 +5,7 @@ import './PreviewCard.scss';
 import WeatherIcon from 'react-icons-weather';
 
 // other import
-import content from '../core/js/content';
+import content from '../../core/js/content';
 
 class PreviewCard extends React.Component {
 	showDetails = () => {
@@ -43,7 +43,7 @@ class PreviewCard extends React.Component {
 					</div>
 				</div>
 				<div className="preview-card-right-content">
-					<span className="right-rail-temp main-content">{temp}</span>
+					<span className="right-rail-temp">{temp}</span>
 				</div>
 			</div>
 		)
