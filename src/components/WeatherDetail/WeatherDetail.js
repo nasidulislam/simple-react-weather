@@ -6,8 +6,8 @@ import Button from '../Button/Button';
 import ToggleButton from 'react-toggle-button';
 
 // other imports
-import isEmptyObj from '../core/js/helpers';
-import content from "../core/js/content";
+import isEmptyObj from '../../core/js/helpers';
+import content from "../../core/js/content";
 
 class WeatherDetail extends React.Component {
 	// custom methods

@@ -1,4 +1,4 @@
-@import '../core/scss/variables';
+@import '../../core/scss/variables';
 
 .preview-card-container {
 	align-items: center;
@@ -50,5 +50,11 @@
 
 	.left-rail-description {
 		margin-right: 10px;
+	}
+
+	.preview-card-right-content {
+		font-weight: bold;
+		text-align: right;
+		white-space: nowrap;
 	}
 }

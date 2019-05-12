@@ -8,8 +8,8 @@ import ToggleButton from 'react-toggle-button';
 import IconButton from '../IconButton/IconButton';
 
 // other imports
-import isEmptyObj from '../core/js/helpers';
-import content from '../core/js/content';
+import isEmptyObj from '../../core/js/helpers';
+import content from '../../core/js/content';
 
 class Dashboard extends React.Component {
 	// custom methods
