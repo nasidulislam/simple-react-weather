@@ -10,6 +10,7 @@ import WeatherDetail from './WeatherDetail/WeatherDetail';
 // other imports
 import '../core/scss/variables.scss';
 import '../core/scss/reset.scss';
+import getCurrentWeather from '../services/weather';
 
 class App extends Component {
 	state = {
@@ -67,57 +68,58 @@ class App extends Component {
 			// copy state
 			const cities = {...this.state.cities};
 			// extract info we need
+			const addressLength = address.length;
 			const cityName = address[0].long_name;
-			const provinceName = address[address.length - 2].long_name;
-			const countryLongName = address[address.length - 1].long_name;
-			const countryShortName = address[address.length - 1].short_name;
+			const provinceName = address[addressLength - 2].long_name;
+			const countryLongName = address[addressLength - 1].long_name;
+			const countryShortName = address[addressLength - 1].short_name;
 			const mapUrl = addressObject.url;
-			const photos = addressObject.photos;
 			const query = addressObject.formatted_address;
 			const weatherUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "," + countryShortName + "&apiKey=7bb01bafabc3c0d73e05a0731e700eed";
+
+			getCurrentWeather(weatherUrl);
 
 			// call weather API with city info
 			fetch(weatherUrl)
 				.then(res => res.json())
 				.then((data) => {
-						const sunrise = new Date(data.sys.sunrise).toLocaleString();
-						const sunset = new Date(data.sys.sunset).toLocaleString();
-						const main = data.main;
-						const weatherMain = data.weather[0];
+					const sunrise = new Date(data.sys.sunrise).toLocaleString();
+					const sunset = new Date(data.sys.sunset).toLocaleString();
+					const main = data.main;
+					const weatherMain = data.weather[0];
 
-						// create state object
-						const objKey = cityName + provinceName + countryShortName;
-						const weather = {
-							temp: main.temp,
-							humidity: main.humidity,
-							maxTemp: main.temp_max,
-							minTemp: main.temp_min,
-							cityId: data.id,
-							sunset,
-							sunrise,
-							condition: weatherMain.main,
-							conditionDescription: weatherMain.description,
-							iconId: weatherMain.id
+					// create state object
+					const objKey = cityName + provinceName + countryShortName;
+					const weather = {
+						temp: main.temp,
+						humidity: main.humidity,
+						maxTemp: main.temp_max,
+						minTemp: main.temp_min,
+						cityId: data.id,
+						sunset,
+						sunrise,
+						condition: weatherMain.main,
+						conditionDescription: weatherMain.description,
+						iconId: weatherMain.id
+					};
+
+					if (cities[objKey] !== null) {
+						cities[objKey] = {
+							cityName,
+							provinceName,
+							countryLongName,
+							countryShortName,
+							mapUrl,
+							weather
 						};
+					}
 
-						if (cities[objKey] !== null) {
-							cities[objKey] = {
-								cityName,
-								provinceName,
-								countryLongName,
-								countryShortName,
-								mapUrl,
-								photos,
-								weather
-							};
-						}
-
-						this.setState({cities, query});
-						localStorage.setItem("cities", JSON.stringify(cities));
-					},
-					(error) => {
-						console.log(error);
-					});
+					this.setState({cities, query});
+					localStorage.setItem("cities", JSON.stringify(cities));
+				},
+				(error) => {
+					console.log(error);
+				});
 		}
 	};
 
@@ -154,7 +156,7 @@ class App extends Component {
 	};
 
 	handleTempUnitToggle = (temp, tempUnit) => {
-		if(tempUnit === "F") {
+		if (tempUnit === "F") {
 			return ((temp - 273.15) * 1.8) + 32
 		} else {
 			return temp - 273.15
