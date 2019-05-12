@@ -2,8 +2,8 @@ import React from 'react';
 import './WeatherDetail.scss';
 
 // component imports
-import Button from '../Button/Button';
 import ToggleButton from 'react-toggle-button';
+import BackIconButton from '../IconButtons/BackIconButton';
 
 // other imports
 import isEmptyObj from '../../core/js/helpers';
@@ -40,11 +40,11 @@ class WeatherDetail extends React.Component {
 		return(
 			<div className="weather-detail-container">
 				<div className="weather-detail-header">
-					<Button
-						containerClass="detail-header-left-content"
-						buttonClass="detail-header-back-button"
+					<BackIconButton
+						color="primary"
 						label={content.weatherDetail.backButton.label}
-						variant="icon-button"
+						buttonClass="detail-header-back-button"
+						containerClass="detail-header-back-button-container"
 						clickHandler={this.props.backButton}
 					/>
 
