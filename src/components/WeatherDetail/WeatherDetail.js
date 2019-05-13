@@ -4,6 +4,7 @@ import './WeatherDetail.scss';
 // component imports
 import BackIconButton from '../IconButtons/BackIconButton';
 import Error from '../Error/Error';
+import Description from '../Description/Description';
 
 // other imports
 import isEmptyObj from '../../core/js/helpers';
@@ -34,11 +35,18 @@ class WeatherDetail extends React.Component {
 		const currentCity = this.props.city || {};
 
 		if(!isEmptyObj(currentCity)) {
+			const weatherData = currentCity.weather;
 			return(
 				<div className="weather-detail-container">
 					<div className="weather-detail-header">
 						<div className="detail-header-main">
 							<span className="header-city-name">{currentCity.cityName}</span>
+							<Description
+								containerClass="header-weather-description"
+								condition={weatherData.condition}
+								iconId={weatherData.iconId}
+								iconClass="header-description-icon-class"
+							/>
 							<span className="header-temperature">{this.props.handleTempUnitToggle(currentCity.weather.temp, this.props.tempUnit)}</span>
 							<a href={currentCity.mapUrl} target="_blank" rel="noopener noreferrer" className="city-map-link">(See in map)</a>
 						</div>

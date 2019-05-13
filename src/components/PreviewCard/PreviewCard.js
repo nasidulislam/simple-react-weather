@@ -2,7 +2,7 @@ import React from 'react';
 import './PreviewCard.scss';
 
 // component imports
-import WeatherIcon from 'react-icons-weather';
+import Description from '../Description/Description';
 
 // other import
 import content from '../../core/js/content';
@@ -25,17 +25,11 @@ class PreviewCard extends React.Component {
 				<div className="preview-card-left-content">
 					<div className="left-rail-top-content">
 						<span className="left-rail-city-name main-content">{city.cityName}</span>
-						<div className="left-rail-description-text">
-							<span className="left-rail-description sub-content">
-								{weatherData.condition} / {weatherData.conditionDescription}
-							</span>
-							<WeatherIcon
-								name="owm"
-								iconId={weatherData.iconId}
-								flip="horizontal"
-								rotate="90"
-							/>
-						</div>
+						<Description
+							containerClass="left-rail-description-text"
+							condition={weatherData.condition}
+							iconId={weatherData.iconId}
+						/>
 					</div>
 					<div className="left-rail-bottom-content">
 						<span className="left-rail-low-temp">{content.previewCard.leftRail.low}: {minTemp}</span>
