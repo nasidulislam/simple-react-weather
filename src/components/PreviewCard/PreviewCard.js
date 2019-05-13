@@ -2,7 +2,7 @@ import React from 'react';
 import './PreviewCard.scss';
 
 // component imports
-import WeatherIcon from 'react-icons-weather';
+import Description from '../Description/Description';
 
 // other import
 import content from '../../core/js/content';
@@ -16,26 +16,20 @@ class PreviewCard extends React.Component {
 		const city = this.props.city;
 		const weatherData = city.weather;
 		const tempUnit = this.props.tempUnit;
-		const temp = Math.ceil(this.props.handleTempUnitToggle(weatherData.temp, tempUnit)) + " °" + tempUnit;
-		const minTemp = Math.ceil(this.props.handleTempUnitToggle(weatherData.minTemp, tempUnit)) + " °" + tempUnit;
-		const maxTemp = Math.ceil(this.props.handleTempUnitToggle(weatherData.maxTemp, tempUnit)) + " °" + tempUnit;
+		const temp = this.props.handleTempUnitToggle(weatherData.temp, tempUnit) + " °" + tempUnit;
+		const minTemp = this.props.handleTempUnitToggle(weatherData.minTemp, tempUnit) + " °" + tempUnit;
+		const maxTemp = this.props.handleTempUnitToggle(weatherData.maxTemp, tempUnit) + " °" + tempUnit;
 
 		return(
 			<div className="preview-card-container" onClick={this.showDetails}>
 				<div className="preview-card-left-content">
 					<div className="left-rail-top-content">
 						<span className="left-rail-city-name main-content">{city.cityName}</span>
-						<div className="left-rail-description-text">
-							<span className="left-rail-description sub-content">
-								{weatherData.condition} / {weatherData.conditionDescription}
-							</span>
-							<WeatherIcon
-								name="owm"
-								iconId={weatherData.iconId}
-								flip="horizontal"
-								rotate="90"
-							/>
-						</div>
+						<Description
+							containerClass="left-rail-description-text"
+							condition={weatherData.condition}
+							iconId={weatherData.iconId}
+						/>
 					</div>
 					<div className="left-rail-bottom-content">
 						<span className="left-rail-low-temp">{content.previewCard.leftRail.low}: {minTemp}</span>

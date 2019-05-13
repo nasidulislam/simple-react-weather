@@ -18,9 +18,6 @@ const StepOne = (props) => {
 
             <div className="setup-step-one-middle">
                 <span className="step-one-middle-content-one">{content.stepOne.middleContent.one}</span>
-
-                {/*TODO: Place screenshot of finished setup app */}
-                <img src="" alt="" className="step-one-middle-content-two" />
             </div>
 
             <div className="setup-step-one-bottom">

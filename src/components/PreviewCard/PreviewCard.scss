@@ -20,9 +20,10 @@
 		font-weight: bold;
 	}
 
-	.sub-content {
+	.description-container .description-condition {
 		color: $spring-green;
 		font-size: 13px;
+		margin-right: 10px;
 	}
 
 	.left-rail-top-content {
@@ -45,6 +46,7 @@
 	}
 
 	.left-rail-description-text {
+		display: flex;
 		text-transform: capitalize;
 	}
 

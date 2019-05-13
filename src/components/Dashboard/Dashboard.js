@@ -5,7 +5,7 @@ import './Dashboard.scss';
 import PreviewCard from '../PreviewCard/PreviewCard';
 import Error from '../Error/Error';
 import ToggleButton from 'react-toggle-button';
-import IconButton from '../IconButton/IconButton';
+import AddIconButton from '../IconButtons/AddIconButton';
 
 // other imports
 import isEmptyObj from '../../core/js/helpers';
@@ -38,7 +38,7 @@ class Dashboard extends React.Component {
         if(isEmptyObj(cities)) {
             return(
                 <div className="dashboard-container">
-                    <Error errorMessage={content.dashboard.errorMessage} />
+                    <Error errorMessage={content.common.errorMessage} />
                 </div>
             )
         } else {
@@ -46,10 +46,11 @@ class Dashboard extends React.Component {
 		        <div className="dashboard-container">
                     <div className="dashboard-header">
                         <div className="dashboard-header-left-content">
-	                        <IconButton
+	                        <AddIconButton
 		                        color="primary"
-		                        label="Add"
-		                        classList="dashboard-add-city-icon-button"
+		                        label={content.dashboard.addButton.label}
+		                        buttonClass="dashboard-add-city-icon-button"
+		                        containerClass="dashboard-add-city-icon-button-container"
 	                        />
                         </div>
                         <div className="dashboard-header-right-content">

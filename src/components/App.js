@@ -97,7 +97,9 @@ class App extends Component {
 						sunrise,
 						condition: weatherMain.main,
 						conditionDescription: weatherMain.description,
-						iconId: weatherMain.id
+						iconId: weatherMain.id,
+						wind: data.wind,
+						pressure: main.pressure
 					};
 
 					if (cities[objKey] !== null) {
@@ -135,6 +137,17 @@ class App extends Component {
 	};
 
 	showCityDetails = (city) => {
+		const {cityName, countryShortName} = city;
+		const url = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "," + countryShortName + "&apiKey=7bb01bafabc3c0d73e05a0731e700eed";
+
+		fetch(url)
+			.then(res => res.json())
+			.then((data) => {
+				console.log(data);
+			}, (error) => {
+
+			});
+
 		this.setState({ cityBeingViewed: city });
 		this.handleSetupSteps();
 	};
@@ -154,9 +167,9 @@ class App extends Component {
 
 	handleTempUnitToggle = (temp, tempUnit) => {
 		if (tempUnit === "F") {
-			return ((temp - 273.15) * 1.8) + 32
+			return Math.ceil(((temp - 273.15) * 1.8) + 32)
 		} else {
-			return temp - 273.15
+			return Math.ceil(temp - 273.15)
 		}
 	};
 
@@ -210,8 +223,8 @@ class App extends Component {
 						setView={this.setView}
 						setCity={this.setCity}
 						backButton={this.backButton}
-						onToggle={this.onToggle}
-						value={this.state.value}
+						tempUnit={this.state.tempUnit}
+						handleTempUnitToggle={this.handleTempUnitToggle}
 					/>
 				</div>
 			)

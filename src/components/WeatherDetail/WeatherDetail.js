@@ -2,19 +2,16 @@ import React from 'react';
 import './WeatherDetail.scss';
 
 // component imports
-import Button from '../Button/Button';
-import ToggleButton from 'react-toggle-button';
+import BackIconButton from '../IconButtons/BackIconButton';
+import Error from '../Error/Error';
+import Description from '../Description/Description';
+import InfoCard from '../InfoCard/InfoCard';
 
 // other imports
 import isEmptyObj from '../../core/js/helpers';
 import content from "../../core/js/content";
 
 class WeatherDetail extends React.Component {
-	// custom methods
-	onToggle = (value) => {
-		this.props.onToggle(value);
-	};
-
 	// life cycle methods
 	componentDidMount() {
 		let cities = {};
@@ -37,33 +34,68 @@ class WeatherDetail extends React.Component {
 
 	render() {
 		const currentCity = this.props.city || {};
-		return(
-			<div className="weather-detail-container">
-				<div className="weather-detail-header">
-					<Button
-						containerClass="detail-header-left-content"
-						buttonClass="detail-header-back-button"
+
+		if(!isEmptyObj(currentCity)) {
+			const weatherData = currentCity.weather;
+			return(
+				<div className="weather-detail-container">
+					<div className="weather-detail-header">
+						<div className="detail-header-main">
+							<span className="header-city-name">{currentCity.cityName}</span>
+							<Description
+								containerClass="header-weather-description"
+								condition={weatherData.condition}
+								iconId={weatherData.iconId}
+								iconClass="header-description-icon-class"
+							/>
+						</div>
+					</div>
+
+					<div className="detail-info-card-row detail-temp-humid-container">
+						<InfoCard
+							header="temperature"
+							details={this.props.handleTempUnitToggle(weatherData.temp, this.props.tempUnit)}
+							containerClass="details-info-card-temp-container"
+						/>
+						<InfoCard
+							header="humidity"
+							details={weatherData.humidity}
+							containerClass="details-info-card-humidity-container"
+							unit="%"
+						/>
+					</div>
+
+					<div className="detail-info-card-row detail-wind-pressure-container">
+						<InfoCard
+							header="wind"
+							details={weatherData.wind.speed}
+							containerClass="details-info-card-wind-container"
+							unit="m/s"
+						/>
+						<InfoCard
+							header="pressure"
+							details={Math.floor((weatherData.pressure)/1000)}
+							containerClass="details-info-card-pressure-container"
+							unit="khpa"
+						/>
+					</div>
+
+					<BackIconButton
+						color="primary"
 						label={content.weatherDetail.backButton.label}
-						variant="icon-button"
+						buttonClass="detail-back-button"
+						containerClass="detail-back-button-container"
 						clickHandler={this.props.backButton}
 					/>
-
-					<div className="detail-header-main">
-						<span className="header-city-name">{currentCity.cityName}</span>
-						<span className="header-province-name">{currentCity.provinceName}, {currentCity.countryLongName}</span>
-						<a href={currentCity.mapUrl} target="_blank" rel="noopener noreferrer" className="city-map-link">(See in map)</a>
-					</div>
-
-					<div className="detail-header-right-content">
-						<ToggleButton
-							value={ this.props.value || false }
-							activeLabel={content.common.toggleButton.activeLabel}
-							inactiveLabel={content.common.toggleButton.inactiveLabel}
-							onToggle={this.onToggle} />
-					</div>
 				</div>
-			</div>
-		)
+			)
+		} else {
+			return(
+				<div className="weather-detail-container">
+					<Error errorMessage={content.common.errorMessage} />
+				</div>
+			)
+		}
 	}
 }
 

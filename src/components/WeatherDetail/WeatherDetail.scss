@@ -11,10 +11,11 @@
 
 	.weather-detail-header {
 		display: flex;
-		justify-content: space-between;
+		justify-content: center;
 
 		.header-city-name {
-			font-size: 1.8rem;
+			font-size: 40px;
+			font-weight: bold;
 		}
 
 		.header-province-name {
@@ -26,5 +27,31 @@
 			font-size: 0.8rem;
 			margin-top: 8px;
 		}
+	}
+
+	.detail-back-button-container {
+		position: absolute;
+		bottom: 10px;
+		left: 10px;
+	}
+
+	.header-weather-description {
+		margin-top: 20px;
+
+		.description-condition {
+			font-size: 30px;
+		}
+
+		.header-description-icon-class {
+			font-size: 70px;
+			margin-top: 40px;
+			text-align: center;
+		}
+	}
+
+	.detail-info-card-row {
+		display: flex;
+		justify-content: space-around;
+		margin-top: 25px;
 	}
 }
