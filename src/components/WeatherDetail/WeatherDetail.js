@@ -51,17 +51,32 @@ class WeatherDetail extends React.Component {
 						</div>
 					</div>
 
-					<div className="detail-temp-humid-container">
+					<div className="detail-info-card-row detail-temp-humid-container">
 						<InfoCard
 							header="temperature"
-							details={this.props.handleTempUnitToggle(currentCity.weather.temp, this.props.tempUnit)}
+							details={this.props.handleTempUnitToggle(weatherData.temp, this.props.tempUnit)}
 							containerClass="details-info-card-temp-container"
 						/>
 						<InfoCard
 							header="humidity"
-							details={currentCity.weather.humidity}
+							details={weatherData.humidity}
 							containerClass="details-info-card-humidity-container"
 							unit="%"
+						/>
+					</div>
+
+					<div className="detail-info-card-row detail-wind-pressure-container">
+						<InfoCard
+							header="wind"
+							details={weatherData.wind.speed}
+							containerClass="details-info-card-wind-container"
+							unit="m/s"
+						/>
+						<InfoCard
+							header="pressure"
+							details={Math.floor((weatherData.pressure)/1000)}
+							containerClass="details-info-card-pressure-container"
+							unit="khpa"
 						/>
 					</div>
 

@@ -98,7 +98,8 @@ class App extends Component {
 						condition: weatherMain.main,
 						conditionDescription: weatherMain.description,
 						iconId: weatherMain.id,
-						wind: data.wind
+						wind: data.wind,
+						pressure: main.pressure
 					};
 
 					if (cities[objKey] !== null) {
