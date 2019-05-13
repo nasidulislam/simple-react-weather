@@ -5,6 +5,7 @@ import './WeatherDetail.scss';
 import BackIconButton from '../IconButtons/BackIconButton';
 import Error from '../Error/Error';
 import Description from '../Description/Description';
+import InfoCard from '../InfoCard/InfoCard';
 
 // other imports
 import isEmptyObj from '../../core/js/helpers';
@@ -47,9 +48,12 @@ class WeatherDetail extends React.Component {
 								iconId={weatherData.iconId}
 								iconClass="header-description-icon-class"
 							/>
-							<span className="header-temperature">{this.props.handleTempUnitToggle(currentCity.weather.temp, this.props.tempUnit)}</span>
-							<a href={currentCity.mapUrl} target="_blank" rel="noopener noreferrer" className="city-map-link">(See in map)</a>
 						</div>
+					</div>
+
+					<div className="detail-temp-humid-container">
+						 <InfoCard header="temperature" details={this.props.handleTempUnitToggle(currentCity.weather.temp, this.props.tempUnit)} />
+						<InfoCard header="humidity" details={currentCity.weather.humidity} />
 					</div>
 
 					<BackIconButton

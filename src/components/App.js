@@ -135,16 +135,16 @@ class App extends Component {
 	};
 
 	showCityDetails = (city) => {
-		const {cityName, countryShortName} = city;
-		const url = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "," + countryShortName + "&apiKey=7bb01bafabc3c0d73e05a0731e700eed";
-
-		fetch(url)
-			.then(res => res.json())
-			.then((data) => {
-				console.log(data);
-			}, (error) => {
-
-			});
+		// const {cityName, countryShortName} = city;
+		// const url = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "," + countryShortName + "&apiKey=7bb01bafabc3c0d73e05a0731e700eed";
+		//
+		// fetch(url)
+		// 	.then(res => res.json())
+		// 	.then((data) => {
+		// 		console.log(data);
+		// 	}, (error) => {
+		//
+		// 	});
 
 		this.setState({ cityBeingViewed: city });
 		this.handleSetupSteps();
