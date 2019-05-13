@@ -6,6 +6,7 @@ import BackIconButton from '../IconButtons/BackIconButton';
 import Error from '../Error/Error';
 import Description from '../Description/Description';
 import InfoCard from '../InfoCard/InfoCard';
+import Carousel from '../Carousel/CarouselContainer';
 
 // other imports
 import isEmptyObj from '../../core/js/helpers';
@@ -34,6 +35,12 @@ class WeatherDetail extends React.Component {
 
 	render() {
 		const currentCity = this.props.city || {};
+		const carouselOptions = {
+			dots: false,
+			arrows: false,
+			infinite: false,
+			slidesToShow: 5
+		};
 
 		if(!isEmptyObj(currentCity)) {
 			const weatherData = currentCity.weather;
@@ -79,6 +86,12 @@ class WeatherDetail extends React.Component {
 							unit="khpa"
 						/>
 					</div>
+
+					<Carousel
+						containerClass="forecast-carousel-container"
+						itemList={currentCity.forecast}
+						options={carouselOptions}
+					/>
 
 					<BackIconButton
 						color="primary"

@@ -143,13 +143,10 @@ class App extends Component {
 		fetch(url)
 			.then(res => res.json())
 			.then((data) => {
-				console.log(data);
-			}, (error) => {
-
-			});
-
-		this.setState({ cityBeingViewed: city });
-		this.handleSetupSteps();
+				city.forecast = data.list;
+				this.setState({ cityBeingViewed: city });
+				this.handleSetupSteps();
+			}, (error) => { console.log(error); });
 	};
 
 	backButton = () => {
