@@ -9,7 +9,7 @@ import InfoCard from '../InfoCard/InfoCard';
 import Carousel from '../Carousel/CarouselContainer';
 
 // other imports
-import isEmptyObj from '../../core/js/helpers';
+import isEmptyObj from '../../core/js/helpers/IsEmptyObj';
 import content from "../../core/js/content";
 
 class WeatherDetail extends React.Component {
@@ -63,6 +63,7 @@ class WeatherDetail extends React.Component {
 							header="temperature"
 							details={this.props.handleTempUnitToggle(weatherData.temp, this.props.tempUnit)}
 							containerClass="details-info-card-temp-container"
+							unit={" °" + this.props.tempUnit}
 						/>
 						<InfoCard
 							header="humidity"
