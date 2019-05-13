@@ -52,8 +52,17 @@ class WeatherDetail extends React.Component {
 					</div>
 
 					<div className="detail-temp-humid-container">
-						 <InfoCard header="temperature" details={this.props.handleTempUnitToggle(currentCity.weather.temp, this.props.tempUnit)} />
-						<InfoCard header="humidity" details={currentCity.weather.humidity} />
+						<InfoCard
+							header="temperature"
+							details={this.props.handleTempUnitToggle(currentCity.weather.temp, this.props.tempUnit)}
+							containerClass="details-info-card-temp-container"
+						/>
+						<InfoCard
+							header="humidity"
+							details={currentCity.weather.humidity}
+							containerClass="details-info-card-humidity-container"
+							unit="%"
+						/>
 					</div>
 
 					<BackIconButton

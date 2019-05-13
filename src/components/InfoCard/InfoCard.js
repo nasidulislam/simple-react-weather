@@ -4,8 +4,11 @@ import './InfoCard.scss';
 const InfoCard = (props) => {
 	return(
 		<div className={"info-card " + props.containerClass}>
-			<span className="info-card-header">{props.header}</span>
-			<span className="info-card-details">{props.details}</span>
+			<div className="info-card-header">{props.header}</div>
+			<div className="info-card-details">
+				<span>{props.details}</span>
+				<span className="info-card-description-unit">{props.unit}</span>
+			</div>
 		</div>
 	)
 };

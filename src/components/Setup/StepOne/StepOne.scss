@@ -16,11 +16,7 @@
     // middle block content start
     .setup-step-one-middle {
         @include animated(2.1s);
-        margin-bottom: 50px;
-
-        .step-one-middle-content-two {
-            height: 300px;
-        }
+        margin-bottom: 120px;
     }
 
     // bottom content block started
