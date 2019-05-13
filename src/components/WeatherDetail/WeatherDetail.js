@@ -92,6 +92,7 @@ class WeatherDetail extends React.Component {
 						containerClass="forecast-carousel-container"
 						itemList={currentCity.forecast}
 						options={carouselOptions}
+						tempUnit={this.props.tempUnit}
 					/>
 
 					<BackIconButton

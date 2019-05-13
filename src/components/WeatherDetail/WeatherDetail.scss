@@ -54,4 +54,12 @@
 		justify-content: space-around;
 		margin-top: 25px;
 	}
+
+	.forecast-carousel-container {
+		margin-top: 30px;
+
+		.slick-slide {
+			border: 1px solid red;
+		}
+	}
 }

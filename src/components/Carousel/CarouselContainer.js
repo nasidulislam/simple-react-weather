@@ -9,6 +9,7 @@ import CarouselItem from './CarouselItem';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import convertToTime from '../../core/js/helpers/convertToTime';
+import convertTempUnit from '../../core/js/helpers/convertTempUnit';
 
 class Carousel extends React.Component {
 	render() {
@@ -20,7 +21,10 @@ class Carousel extends React.Component {
 						<CarouselItem
 							key={item}
 							index={item}
-							topContent={convertToTime(itemList[item].dt_txt)}
+							time={convertToTime(itemList[item].dt_txt)}
+							iconId={itemList[item].weather[0].id}
+							temp={convertTempUnit(itemList[item].main.temp, this.props.tempUnit)}
+							tempUnit={this.props.tempUnit}
 						/>
 					))}
 				</Slider>
