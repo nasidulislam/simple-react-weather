@@ -143,13 +143,10 @@ class App extends Component {
 		fetch(url)
 			.then(res => res.json())
 			.then((data) => {
-				console.log(data);
-			}, (error) => {
-
-			});
-
-		this.setState({ cityBeingViewed: city });
-		this.handleSetupSteps();
+				city.forecast = data.list;
+				this.setState({ cityBeingViewed: city });
+				this.handleSetupSteps();
+			}, (error) => { console.log(error); });
 	};
 
 	backButton = () => {
@@ -163,14 +160,6 @@ class App extends Component {
 
 		// save current view in local storage for persistence
 		localStorage.setItem("currentViewName", nextViewName);
-	};
-
-	handleTempUnitToggle = (temp, tempUnit) => {
-		if (tempUnit === "F") {
-			return Math.ceil(((temp - 273.15) * 1.8) + 32)
-		} else {
-			return Math.ceil(temp - 273.15)
-		}
 	};
 
 	// lifecycle methods
@@ -209,7 +198,6 @@ class App extends Component {
 						setCity={this.setCity}
 						tempUnit={this.state.tempUnit}
 						showCityDetails={this.showCityDetails}
-						handleTempUnitToggle={this.handleTempUnitToggle}
 					/>
 				</div>
 			)
@@ -224,7 +212,6 @@ class App extends Component {
 						setCity={this.setCity}
 						backButton={this.backButton}
 						tempUnit={this.state.tempUnit}
-						handleTempUnitToggle={this.handleTempUnitToggle}
 					/>
 				</div>
 			)

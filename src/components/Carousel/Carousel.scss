@@ -1,0 +1,23 @@
+@import "../../core/scss/variables";
+
+.carousel {
+	&.forecast-carousel-container {
+		margin-top: 30px;
+
+		.slick-slide {
+			border: 1px solid $gray;
+			padding: 10px;
+			width: 100px !important;
+		}
+
+		.carousel-item-top-content {
+			text-align: center;
+		}
+
+		.carousel-item-bottom-content {
+			display: flex;
+			justify-content: space-between;
+			margin-top: 10px;
+		}
+	}
+}

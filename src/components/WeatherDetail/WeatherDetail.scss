@@ -1,5 +1,6 @@
 @import "../../core/scss/variables";
 
+$info-card-container-padding: 30px;
 .weather-detail-container {
 	padding-top: 40px;
 
@@ -29,6 +30,11 @@
 		}
 	}
 
+	.detail-info-card-container {
+		padding-left: $info-card-container-padding;
+		padding-right: $info-card-container-padding;
+	}
+
 	.detail-back-button-container {
 		position: absolute;
 		bottom: 10px;
@@ -51,7 +57,7 @@
 
 	.detail-info-card-row {
 		display: flex;
-		justify-content: space-around;
+		justify-content: space-between;
 		margin-top: 25px;
 	}
 }

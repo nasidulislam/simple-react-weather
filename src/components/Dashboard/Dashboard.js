@@ -8,7 +8,7 @@ import ToggleButton from 'react-toggle-button';
 import AddIconButton from '../IconButtons/AddIconButton';
 
 // other imports
-import isEmptyObj from '../../core/js/helpers';
+import isEmptyObj from '../../core/js/helpers/IsEmptyObj';
 import content from '../../core/js/content';
 
 class Dashboard extends React.Component {
@@ -70,7 +70,6 @@ class Dashboard extends React.Component {
                                 city={cities[city]}
                                 tempUnit={this.props.tempUnit}
                                 showCityDetails={this.props.showCityDetails}
-                                handleTempUnitToggle={this.props.handleTempUnitToggle}
                             />
                         ))}
                     </div>

@@ -6,6 +6,7 @@ import Description from '../Description/Description';
 
 // other import
 import content from '../../core/js/content';
+import convertTempUnit from '../../core/js/helpers/convertTempUnit';
 
 class PreviewCard extends React.Component {
 	showDetails = () => {
@@ -16,9 +17,9 @@ class PreviewCard extends React.Component {
 		const city = this.props.city;
 		const weatherData = city.weather;
 		const tempUnit = this.props.tempUnit;
-		const temp = this.props.handleTempUnitToggle(weatherData.temp, tempUnit) + " °" + tempUnit;
-		const minTemp = this.props.handleTempUnitToggle(weatherData.minTemp, tempUnit) + " °" + tempUnit;
-		const maxTemp = this.props.handleTempUnitToggle(weatherData.maxTemp, tempUnit) + " °" + tempUnit;
+		const temp = convertTempUnit(weatherData.temp, tempUnit) + " °" + tempUnit;
+		const minTemp = convertTempUnit(weatherData.minTemp, tempUnit) + " °" + tempUnit;
+		const maxTemp = convertTempUnit(weatherData.maxTemp, tempUnit) + " °" + tempUnit;
 
 		return(
 			<div className="preview-card-container" onClick={this.showDetails}>

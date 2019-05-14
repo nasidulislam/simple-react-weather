@@ -6,10 +6,12 @@ import BackIconButton from '../IconButtons/BackIconButton';
 import Error from '../Error/Error';
 import Description from '../Description/Description';
 import InfoCard from '../InfoCard/InfoCard';
+import Carousel from '../Carousel/CarouselContainer';
 
 // other imports
-import isEmptyObj from '../../core/js/helpers';
+import isEmptyObj from '../../core/js/helpers/IsEmptyObj';
 import content from "../../core/js/content";
+import convertTempUnit from '../../core/js/helpers/convertTempUnit';
 
 class WeatherDetail extends React.Component {
 	// life cycle methods
@@ -34,6 +36,12 @@ class WeatherDetail extends React.Component {
 
 	render() {
 		const currentCity = this.props.city || {};
+		const carouselOptions = {
+			dots: false,
+			arrows: false,
+			infinite: false,
+			slidesToShow: 3
+		};
 
 		if(!isEmptyObj(currentCity)) {
 			const weatherData = currentCity.weather;
@@ -51,34 +59,44 @@ class WeatherDetail extends React.Component {
 						</div>
 					</div>
 
-					<div className="detail-info-card-row detail-temp-humid-container">
-						<InfoCard
-							header="temperature"
-							details={this.props.handleTempUnitToggle(weatherData.temp, this.props.tempUnit)}
-							containerClass="details-info-card-temp-container"
-						/>
-						<InfoCard
-							header="humidity"
-							details={weatherData.humidity}
-							containerClass="details-info-card-humidity-container"
-							unit="%"
-						/>
+					<div className="detail-info-card-container">
+						<div className="detail-info-card-row detail-temp-humid-container">
+							<InfoCard
+								header="temperature"
+								details={convertTempUnit(weatherData.temp, this.props.tempUnit)}
+								containerClass="details-info-card-temp-container"
+								unit={" °" + this.props.tempUnit}
+							/>
+							<InfoCard
+								header="humidity"
+								details={weatherData.humidity}
+								containerClass="details-info-card-humidity-container"
+								unit="%"
+							/>
+						</div>
+
+						<div className="detail-info-card-row detail-wind-pressure-container">
+							<InfoCard
+								header="wind"
+								details={weatherData.wind.speed}
+								containerClass="details-info-card-wind-container"
+								unit="m/s"
+							/>
+							<InfoCard
+								header="pressure"
+								details={Math.floor((weatherData.pressure)/1000)}
+								containerClass="details-info-card-pressure-container"
+								unit="khpa"
+							/>
+						</div>
 					</div>
 
-					<div className="detail-info-card-row detail-wind-pressure-container">
-						<InfoCard
-							header="wind"
-							details={weatherData.wind.speed}
-							containerClass="details-info-card-wind-container"
-							unit="m/s"
-						/>
-						<InfoCard
-							header="pressure"
-							details={Math.floor((weatherData.pressure)/1000)}
-							containerClass="details-info-card-pressure-container"
-							unit="khpa"
-						/>
-					</div>
+					<Carousel
+						containerClass="forecast-carousel-container"
+						itemList={currentCity.forecast}
+						options={carouselOptions}
+						tempUnit={this.props.tempUnit}
+					/>
 
 					<BackIconButton
 						color="primary"
