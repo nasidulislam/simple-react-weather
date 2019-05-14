@@ -11,6 +11,7 @@ import Carousel from '../Carousel/CarouselContainer';
 // other imports
 import isEmptyObj from '../../core/js/helpers/IsEmptyObj';
 import content from "../../core/js/content";
+import convertTempUnit from '../../core/js/helpers/convertTempUnit';
 
 class WeatherDetail extends React.Component {
 	// life cycle methods
@@ -39,7 +40,7 @@ class WeatherDetail extends React.Component {
 			dots: false,
 			arrows: false,
 			infinite: false,
-			slidesToShow: 5
+			slidesToShow: 4
 		};
 
 		if(!isEmptyObj(currentCity)) {
@@ -61,7 +62,7 @@ class WeatherDetail extends React.Component {
 					<div className="detail-info-card-row detail-temp-humid-container">
 						<InfoCard
 							header="temperature"
-							details={this.props.handleTempUnitToggle(weatherData.temp, this.props.tempUnit)}
+							details={convertTempUnit(weatherData.temp, this.props.tempUnit)}
 							containerClass="details-info-card-temp-container"
 							unit={" °" + this.props.tempUnit}
 						/>

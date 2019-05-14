@@ -70,7 +70,6 @@ class Dashboard extends React.Component {
                                 city={cities[city]}
                                 tempUnit={this.props.tempUnit}
                                 showCityDetails={this.props.showCityDetails}
-                                handleTempUnitToggle={this.props.handleTempUnitToggle}
                             />
                         ))}
                     </div>
