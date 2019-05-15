@@ -10,6 +10,7 @@ import WeatherDetail from './WeatherDetail/WeatherDetail';
 // other imports
 import '../core/scss/variables.scss';
 import '../core/scss/reset.scss';
+import convertUnixTimestampToLocalTime from '../core/js/helpers/convertUnixTimestampToLocalTime';
 
 class App extends Component {
 	state = {
@@ -80,8 +81,8 @@ class App extends Component {
 			fetch(weatherUrl)
 				.then(res => res.json())
 				.then((data) => {
-					const sunrise = new Date(data.sys.sunrise).toLocaleString();
-					const sunset = new Date(data.sys.sunset).toLocaleString();
+					const sunrise = convertUnixTimestampToLocalTime(data.sys.sunrise);
+					const sunset = convertUnixTimestampToLocalTime(data.sys.sunset);
 					const main = data.main;
 					const weatherMain = data.weather[0];
 
@@ -198,6 +199,7 @@ class App extends Component {
 						setCity={this.setCity}
 						tempUnit={this.state.tempUnit}
 						showCityDetails={this.showCityDetails}
+						backButton={this.backButton}
 					/>
 				</div>
 			)
