@@ -1,18 +1,21 @@
 @import "../../core/scss/variables";
 
 .info-card {
-	.info-card-header {
-		color: $gray;
-		font-size: 11px;
-		text-transform: uppercase;
-	}
+	// variants
+	&.large {
+		.info-card-header {
+			color: $gray;
+			font-size: 11px;
+			text-transform: uppercase;
+		}
 
-	.info-card-details {
-		font-size: 50px;
-		margin-top: 10px;
-	}
+		.info-card-details {
+			font-size: 50px;
+			margin-top: 10px;
+		}
 
-	.info-card-description-unit {
-		font-size: 25px;
+		.info-card-description-unit {
+			font-size: 25px;
+		}
 	}
 }

@@ -66,12 +66,14 @@ class WeatherDetail extends React.Component {
 								details={convertTempUnit(weatherData.temp, this.props.tempUnit)}
 								containerClass="details-info-card-temp-container"
 								unit={" °" + this.props.tempUnit}
+								variant="large"
 							/>
 							<InfoCard
 								header="humidity"
 								details={weatherData.humidity}
 								containerClass="details-info-card-humidity-container"
 								unit="%"
+								variant="large"
 							/>
 						</div>
 
@@ -81,12 +83,14 @@ class WeatherDetail extends React.Component {
 								details={weatherData.wind.speed}
 								containerClass="details-info-card-wind-container"
 								unit="m/s"
+								variant="large"
 							/>
 							<InfoCard
 								header="pressure"
 								details={Math.floor((weatherData.pressure)/1000)}
 								containerClass="details-info-card-pressure-container"
 								unit="khpa"
+								variant="large"
 							/>
 						</div>
 					</div>
