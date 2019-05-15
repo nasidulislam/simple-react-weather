@@ -102,6 +102,21 @@ class WeatherDetail extends React.Component {
 						tempUnit={this.props.tempUnit}
 					/>
 
+					<div className="detail-info-card-row detail-wind-pressure-container">
+						<InfoCard
+							header="sunrise"
+							details={weatherData.sunrise}
+							containerClass="details-info-card-wind-container"
+							variant="small"
+						/>
+						<InfoCard
+							header="sunset"
+							details={weatherData.sunset}
+							containerClass="details-info-card-pressure-container"
+							variant="small"
+						/>
+					</div>
+
 					<BackIconButton
 						color="primary"
 						label={content.weatherDetail.backButton.label}
