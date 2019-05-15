@@ -45,7 +45,7 @@ class Dashboard extends React.Component {
             return(
 		        <div className="dashboard-container">
                     <div className="dashboard-header">
-                        <div className="dashboard-header-left-content">
+                        <div className="dashboard-header-left-content" onClick={this.props.backButton}>
 	                        <AddIconButton
 		                        color="primary"
 		                        label={content.dashboard.addButton.label}

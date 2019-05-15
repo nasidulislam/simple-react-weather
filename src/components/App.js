@@ -198,6 +198,7 @@ class App extends Component {
 						setCity={this.setCity}
 						tempUnit={this.state.tempUnit}
 						showCityDetails={this.showCityDetails}
+						backButton={this.backButton}
 					/>
 				</div>
 			)
