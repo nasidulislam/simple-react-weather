@@ -25,6 +25,7 @@ class Carousel extends React.Component {
 							iconId={itemList[item].weather[0].id}
 							temp={convertTempUnit(itemList[item].main.temp, this.props.tempUnit)}
 							tempUnit={this.props.tempUnit}
+							icon={itemList[item].weather[0].icon}
 						/>
 					))}
 				</Slider>

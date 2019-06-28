@@ -13,7 +13,8 @@ const CarouselItem = (props) => {
 					iconId={props.iconId}
 					flip="horizontal"
 					rotate="90"
-				/> /
+					icon={props.icon}
+				/>
 				<div>{props.temp} °{props.tempUnit}</div>
 			</div>
 		</div>
